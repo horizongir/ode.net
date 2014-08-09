@@ -9,8 +9,15 @@ namespace Ode.Net.Native
 {
     class dWorldID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        public dWorldID()
+        internal static readonly dWorldID Null = new NulldWorldID();
+
+        internal dWorldID()
             : base(true)
+        {
+        }
+
+        private dWorldID(bool ownsHandle)
+            : base(ownsHandle)
         {
         }
 
@@ -18,6 +25,19 @@ namespace Ode.Net.Native
         {
             NativeMethods.dWorldDestroy(handle);
             return true;
+        }
+
+        class NulldWorldID : dWorldID
+        {
+            public NulldWorldID()
+                : base(false)
+            {
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                return false;
+            }
         }
     }
 }
