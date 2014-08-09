@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenTK;
 
 namespace Ode.Net.UnitTests
 {
@@ -21,8 +22,10 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void GetSetGravity_ReturnsCorrectValue()
         {
+            world.Gravity = Vector3.One;
+            Assert.AreEqual(world.Gravity, Vector3.One);
         }
     }
 }
