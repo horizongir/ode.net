@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenTK;
-using dReal = System.Single;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Runtime.InteropServices;
+using dReal = System.Single;
 
 namespace Ode.Net.UnitTests
 {
