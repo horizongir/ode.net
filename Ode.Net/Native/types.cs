@@ -23,4 +23,22 @@ namespace Ode.Net.Native
         internal IntPtr shrink_block;
         internal IntPtr free_block;
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct dThreadingFunctionsInfo
+    {
+        internal uint struct_size;
+        IntPtr alloc_mutex_group;
+        IntPtr free_mutex_group;
+        IntPtr lock_group_mutex;
+        IntPtr unlock_group_mutex;
+        IntPtr alloc_call_wait;
+        IntPtr reset_call_wait;
+        IntPtr free_call_wait;
+        IntPtr post_call;
+        IntPtr alter_call_dependencies_count;
+        IntPtr wait_call;
+        IntPtr retrieve_thread_count;
+        IntPtr preallocate_resources_for_calls;
+    }
 }
