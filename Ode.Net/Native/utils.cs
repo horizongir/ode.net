@@ -1,5 +1,4 @@
-﻿using OpenTK;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -25,6 +24,7 @@ namespace Ode.Net.Native
             vector.X = vec[0];
             vector.Y = vec[1];
             vector.Z = vec[2];
+            vector.W = 0;
         }
     }
 }
