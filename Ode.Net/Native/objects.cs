@@ -173,5 +173,283 @@ namespace Ode.Net.Native
         internal static extern void dWorldSetMaxAngularSpeed(dWorldID w, dReal max_speed);
 
         #endregion
+
+        #region Rigid Bodies
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetAutoDisableLinearThreshold(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAutoDisableLinearThreshold(dBodyID b, dReal linear_average_threshold);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetAutoDisableAngularThreshold(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAutoDisableAngularThreshold(dBodyID b, dReal angular_average_threshold);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyGetAutoDisableAverageSamplesCount(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAutoDisableAverageSamplesCount(dBodyID b, uint average_samples_count);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyGetAutoDisableSteps(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAutoDisableSteps(dBodyID b, int steps);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetAutoDisableTime(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAutoDisableTime(dBodyID b, dReal time);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyGetAutoDisableFlag(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAutoDisableFlag(dBodyID b, int do_auto_disable);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAutoDisableDefaults(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dWorldID dBodyGetWorld(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dBodyID dBodyCreate(dWorldID w);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyDestroy(IntPtr b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetData(dBodyID b, IntPtr data);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetData(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetPosition(dBodyID b, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetRotation(dBodyID b, ref Matrix3 R);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetQuaternion(dBodyID b, ref Quaternion q);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetLinearVel(dBodyID b, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAngularVel(dBodyID b, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetPosition(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyCopyPosition(dBodyID body, out Vector3 pos);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetRotation(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyCopyRotation(dBodyID b, out Matrix3 R);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetQuaternion(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyCopyQuaternion(dBodyID body, out Quaternion quat);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetLinearVel(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetAngularVel(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetMass(dBodyID b, ref Mass mass);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyGetMass(dBodyID b, out Mass mass);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddForce(dBodyID b, dReal fx, dReal fy, dReal fz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddTorque(dBodyID b, dReal fx, dReal fy, dReal fz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddRelForce(dBodyID b, dReal fx, dReal fy, dReal fz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddRelTorque(dBodyID b, dReal fx, dReal fy, dReal fz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddForceAtPos(dBodyID b, dReal fx, dReal fy, dReal fz,
+                                    dReal px, dReal py, dReal pz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddForceAtRelPos(dBodyID b, dReal fx, dReal fy, dReal fz,
+                                    dReal px, dReal py, dReal pz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddRelForceAtPos(dBodyID b, dReal fx, dReal fy, dReal fz,
+                                    dReal px, dReal py, dReal pz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyAddRelForceAtRelPos(dBodyID b, dReal fx, dReal fy, dReal fz,
+                                    dReal px, dReal py, dReal pz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetForce(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetTorque(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetForce(dBodyID b, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetTorque(dBodyID b, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyGetRelPointPos
+        (
+          dBodyID b, dReal px, dReal py, dReal pz,
+          out Vector3 result
+        );
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyGetRelPointVel
+        (
+          dBodyID b, dReal px, dReal py, dReal pz,
+          out Vector3 result
+        );
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyGetPointVel
+        (
+          dBodyID b, dReal px, dReal py, dReal pz,
+          out Vector3 result
+        );
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyGetPosRelPoint
+        (
+          dBodyID b, dReal px, dReal py, dReal pz,
+          out Vector3 result
+        );
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyVectorToWorld
+        (
+          dBodyID b, dReal px, dReal py, dReal pz,
+          out Vector3 result
+        );
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyVectorFromWorld
+        (
+          dBodyID b, dReal px, dReal py, dReal pz,
+          out Vector3 result
+        );
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetFiniteRotationMode(dBodyID b, int mode);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetFiniteRotationAxis(dBodyID b, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyGetFiniteRotationMode(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyGetFiniteRotationAxis(dBodyID b, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyGetNumJoints(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dBodyGetJoint(dBodyID b, int index);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetDynamic(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetKinematic(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyIsKinematic(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyEnable(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodyDisable(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyIsEnabled(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetGravityMode(dBodyID b, int mode);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyGetGravityMode(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetMovedCallback(dBodyID b, MovedCallback callback);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dGeomID dBodyGetFirstGeom(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dGeomID dBodyGetNextGeom(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetDampingDefaults(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetLinearDamping(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetLinearDamping(dBodyID b, dReal scale);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetAngularDamping(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAngularDamping(dBodyID b, dReal scale);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetDamping(dBodyID b, dReal linear_scale, dReal angular_scale);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetLinearDampingThreshold(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetLinearDampingThreshold(dBodyID b, dReal threshold);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetAngularDampingThreshold(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetAngularDampingThreshold(dBodyID b, dReal threshold);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dBodyGetMaxAngularSpeed(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetMaxAngularSpeed(dBodyID b, dReal max_speed);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dBodyGetGyroscopicMode(dBodyID b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dBodySetGyroscopicMode(dBodyID b, int enabled);
+
+        #endregion
     }
 }

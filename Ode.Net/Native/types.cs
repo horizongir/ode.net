@@ -41,4 +41,7 @@ namespace Ode.Net.Native
         IntPtr retrieve_thread_count;
         IntPtr preallocate_resources_for_calls;
     }
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate void MovedCallback(dBodyID b);
 }
