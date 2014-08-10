@@ -29,6 +29,11 @@ namespace Ode.Net
             id = NativeMethods.dWorldCreate();
         }
 
+        internal dWorldID Id
+        {
+            get { return id; }
+        }
+
         /// <summary>
         /// Gets or sets the world's global gravity vector.
         /// </summary>
@@ -36,9 +41,9 @@ namespace Ode.Net
         {
             get
             {
-                Vector3 result;
-                NativeMethods.dWorldGetGravity(id, out result);
-                return result;
+                Vector3 gravity;
+                NativeMethods.dWorldGetGravity(id, out gravity);
+                return gravity;
             }
             set
             {
