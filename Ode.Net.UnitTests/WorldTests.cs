@@ -145,12 +145,12 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetContactMaxCorrectingVel_ReturnsCorrectValue()
+        public void GetSetContactMaxCorrectingVelocity_ReturnsCorrectValue()
         {
-            var value = world.ContactMaxCorrectingVel;
-            world.ContactMaxCorrectingVel = value + 1;
-            Assert.AreEqual(value + 1, world.ContactMaxCorrectingVel);
-            world.ContactMaxCorrectingVel = value;
+            var value = world.ContactMaxCorrectingVelocity;
+            world.ContactMaxCorrectingVelocity = value + 1;
+            Assert.AreEqual(value + 1, world.ContactMaxCorrectingVelocity);
+            world.ContactMaxCorrectingVelocity = value;
         }
 
         [TestMethod]
@@ -208,7 +208,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAutoDisableFlag_ReturnsCorrectValue()
+        public void GetSetAutoDisable_ReturnsCorrectValue()
         {
             var value = world.AutoDisable;
             world.AutoDisable = !value;
