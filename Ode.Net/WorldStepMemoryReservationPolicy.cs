@@ -11,12 +11,12 @@ namespace Ode.Net
     /// <summary>
     /// Represents a memory reservation policy descriptor for world stepping functions.
     /// </summary>
-    public class WorldStepReserveInfo
+    public class WorldStepMemoryReservationPolicy
     {
         internal dWorldStepReserveInfo info;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WorldStepReserveInfo"/> class with
+        /// Initializes a new instance of the <see cref="WorldStepMemoryReservationPolicy"/> class with
         /// the specified memory reservation policy parameters.
         /// </summary>
         /// <param name="reserveFactor">
@@ -28,7 +28,7 @@ namespace Ode.Net
         /// to allocate expected working memory minimum at once without extra
         /// reallocations as number of bodies/joints grows.
         /// </param>
-        public WorldStepReserveInfo(float reserveFactor = 1.2f, int reserveMinimum = 65536)
+        public WorldStepMemoryReservationPolicy(float reserveFactor = 1.2f, int reserveMinimum = 65536)
         {
             info.struct_size = (uint)Marshal.SizeOf(typeof(dWorldStepReserveInfo));
             info.reserve_factor = reserveFactor;

@@ -39,7 +39,7 @@ namespace Ode.Net
     /// <summary>
     /// Represents the memory manager used by world stepping functions.
     /// </summary>
-    public class WorldStepMemoryFunctionsInfo
+    public class WorldStepMemoryManager
     {
         internal dWorldStepMemoryFunctionsInfo info;
         readonly AllocateBlock allocate;
@@ -47,7 +47,7 @@ namespace Ode.Net
         readonly FreeBlock free;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WorldStepMemoryFunctionsInfo"/> class
+        /// Initializes a new instance of the <see cref="WorldStepMemoryManager"/> class
         /// with the specified memory handling callbacks.
         /// </summary>
         /// <param name="allocateBlock">
@@ -59,7 +59,7 @@ namespace Ode.Net
         /// <param name="freeBlock">
         /// A function to delete an existing memory block.
         /// </param>
-        public WorldStepMemoryFunctionsInfo(
+        public WorldStepMemoryManager(
             AllocateBlock allocateBlock,
             ShrinkBlock shrinkBlock,
             FreeBlock freeBlock)

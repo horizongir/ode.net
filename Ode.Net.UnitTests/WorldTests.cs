@@ -77,7 +77,7 @@ namespace Ode.Net.UnitTests
         [TestMethod]
         public void SetStepMemoryReservationPolicy_Returns()
         {
-            var policyInfo = new WorldStepReserveInfo();
+            var policyInfo = new WorldStepMemoryReservationPolicy();
             world.SetStepMemoryReservationPolicy(policyInfo);
             world.SetStepMemoryReservationPolicy(null);
         }
@@ -86,7 +86,7 @@ namespace Ode.Net.UnitTests
         public void SetStepMemoryManager_Returns()
         {
             const dReal StepSize = (dReal)0.1;
-            var memoryManager = new WorldStepMemoryFunctionsInfo(
+            var memoryManager = new WorldStepMemoryManager(
                 (size) => Marshal.AllocHGlobal(size),
                 (ptr, ss, sf) => Marshal.ReAllocHGlobal(ptr, sf),
                 (ptr, ss) => Marshal.FreeHGlobal(ptr));
@@ -210,10 +210,10 @@ namespace Ode.Net.UnitTests
         [TestMethod]
         public void GetSetAutoDisableFlag_ReturnsCorrectValue()
         {
-            var value = world.AutoDisableFlag;
-            world.AutoDisableFlag = !value;
-            Assert.AreEqual(!value, world.AutoDisableFlag);
-            world.AutoDisableFlag = value;
+            var value = world.AutoDisable;
+            world.AutoDisable = !value;
+            Assert.AreEqual(!value, world.AutoDisable);
+            world.AutoDisable = value;
         }
 
         [TestMethod]

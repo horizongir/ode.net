@@ -164,7 +164,7 @@ namespace Ode.Net
         /// <summary>
         /// Gets or sets the auto disable flag for newly created bodies.
         /// </summary>
-        public bool AutoDisableFlag
+        public bool AutoDisable
         {
             get { return NativeMethods.dWorldGetAutoDisableFlag(id) != 0; }
             set { NativeMethods.dWorldSetAutoDisableFlag(id, value ? 1 : 0); }
@@ -250,7 +250,7 @@ namespace Ode.Net
         /// <exception cref="InvalidOperationException">
         /// Failed to set memory reservation policy for world stepping operations.
         /// </exception>
-        public void SetStepMemoryReservationPolicy(WorldStepReserveInfo policyInfo)
+        public void SetStepMemoryReservationPolicy(WorldStepMemoryReservationPolicy policyInfo)
         {
             var result = policyInfo == null
                 ? NativeMethods.dWorldSetStepMemoryReservationPolicy(id, IntPtr.Zero)
@@ -271,7 +271,7 @@ namespace Ode.Net
         /// <exception cref="InvalidOperationException">
         /// Failed to set memory manager for world stepping operations.
         /// </exception>
-        public void SetStepMemoryManager(WorldStepMemoryFunctionsInfo memoryManager)
+        public void SetStepMemoryManager(WorldStepMemoryManager memoryManager)
         {
             var result = memoryManager == null
                 ? NativeMethods.dWorldSetStepMemoryManager(id, IntPtr.Zero)
