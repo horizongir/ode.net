@@ -101,7 +101,7 @@ namespace Ode.Net
         /// Gets or sets the maximum correcting velocity that contacts are allowed
         /// to generate.
         /// </summary>
-        public dReal ContactMaxCorrectingVel
+        public dReal ContactMaxCorrectingVelocity
         {
             get { return NativeMethods.dWorldGetContactMaxCorrectingVel(id); }
             set { NativeMethods.dWorldSetContactMaxCorrectingVel(id, value); }
@@ -117,7 +117,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the auto disable linear threshold for newly created bodies.
+        /// Gets or sets the auto-disable linear velocity threshold for newly created bodies.
         /// </summary>
         public dReal AutoDisableLinearThreshold
         {
@@ -126,7 +126,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the auto disable angular threshold for newly created bodies.
+        /// Gets or sets the auto-disable angular velocity threshold for newly created bodies.
         /// </summary>
         public dReal AutoDisableAngularThreshold
         {
@@ -135,7 +135,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the auto disable sample count for newly created bodies.
+        /// Gets or sets the auto-disable average velocity sample count for newly created bodies.
         /// </summary>
         public int AutoDisableAverageSamplesCount
         {
@@ -144,7 +144,8 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the auto disable steps for newly created bodies.
+        /// Gets or sets the number of simulation steps newly created bodies have to be idle for
+        /// in order to automatically disable themselves.
         /// </summary>
         public int AutoDisableSteps
         {
@@ -153,7 +154,8 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the auto disable time for newly created bodies.
+        /// Gets or sets the amount of simulation time newly created bodies have to be idle for
+        /// in order to automatically disable themselves.
         /// </summary>
         public dReal AutoDisableTime
         {
@@ -162,7 +164,8 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the auto disable flag for newly created bodies.
+        /// Gets or sets a value indicating whether newly created bodies should automatically
+        /// disable themselves when they have been idle for some specified period of time.
         /// </summary>
         public bool AutoDisable
         {
@@ -171,7 +174,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the world's linear damping threshold.
+        /// Gets or sets the world's linear velocity damping threshold.
         /// </summary>
         public dReal LinearDampingThreshold
         {
@@ -180,7 +183,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the world's angular damping threshold.
+        /// Gets or sets the world's angular velocity damping threshold.
         /// </summary>
         public dReal AngularDampingThreshold
         {
@@ -189,7 +192,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the world's linear damping scale.
+        /// Gets or sets the world's linear velocity damping scale.
         /// </summary>
         public dReal LinearDamping
         {
@@ -198,7 +201,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Gets or sets the world's angular damping scale.
+        /// Gets or sets the world's angular velocity damping scale.
         /// </summary>
         public dReal AngularDamping
         {
