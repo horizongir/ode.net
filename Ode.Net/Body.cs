@@ -52,7 +52,7 @@ namespace Ode.Net
             set { NativeMethods.dBodySetAutoDisableTime(id, value); }
         }
 
-        public bool AutoDisableFlag
+        public bool AutoDisable
         {
             get { return NativeMethods.dBodyGetAutoDisableFlag(id) != 0; }
             set { NativeMethods.dBodySetAutoDisableFlag(id, value ? 1 : 0); }
@@ -138,7 +138,7 @@ namespace Ode.Net
             }
             set
             {
-                //NativeMethods.dBodySetMass(id, ref value.Value);
+                NativeMethods.dBodySetMass(id, ref value);
             }
         }
 
