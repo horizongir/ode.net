@@ -49,4 +49,25 @@ namespace Ode.Net
         /// </summary>
         All = ~BasicData
     }
+
+    /// <summary>
+    /// Specifies the direction axis for capsule-like masses.
+    /// </summary>
+    public enum DirectionAxis
+    {
+        /// <summary>
+        /// Specifies that the long axis of the mass is the x-axis.
+        /// </summary>
+        X = 1,
+
+        /// <summary>
+        /// Specifies that the long axis of the mass is the y-axis.
+        /// </summary>
+        Y = 2,
+
+        /// <summary>
+        /// Specifies that the long axis of the mass is the z-axis.
+        /// </summary>
+        Z = 3
+    }
 }
