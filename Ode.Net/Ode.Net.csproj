@@ -50,6 +50,7 @@
     <Compile Include="Native\dGeomID.cs" />
     <Compile Include="Native\dBodyID.cs" />
     <Compile Include="Native\dWorldID.cs" />
+    <Compile Include="Native\mass.cs" />
     <Compile Include="Native\objects.cs" />
     <Compile Include="Native\odeinit.cs" />
     <Compile Include="Native\types.cs" />
