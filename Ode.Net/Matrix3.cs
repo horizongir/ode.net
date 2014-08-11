@@ -17,48 +17,48 @@ namespace Ode.Net
         /// <summary>
         /// Specifies the first row of the matrix.
         /// </summary>
-        public Vector3 Row0;
+        public Vector3 Row1;
 
         /// <summary>
         /// Specifies the second row of the matrix.
         /// </summary>
-        public Vector3 Row1;
+        public Vector3 Row2;
 
         /// <summary>
         /// Specifies the third row of the matrix.
         /// </summary>
-        public Vector3 Row2;
+        public Vector3 Row3;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Matrix3"/> structure
         /// with the specified element values.
         /// </summary>
-        /// <param name="m00">The value at the first row and first column of the matrix.</param>
-        /// <param name="m01">The value at the first row and second column of the matrix.</param>
-        /// <param name="m02">The value at the first row and third column of the matrix.</param>
-        /// <param name="m10">The value at the second row and first column of the matrix.</param>
-        /// <param name="m11">The value at the second row and second column of the matrix.</param>
-        /// <param name="m12">The value at the second row and third column of the matrix.</param>
-        /// <param name="m20">The value at the third row and first column of the matrix.</param>
-        /// <param name="m21">The value at the third row and second column of the matrix.</param>
-        /// <param name="m22">The value at the third row and third column of the matrix.</param>
+        /// <param name="m11">The value at the first row and first column of the matrix.</param>
+        /// <param name="m12">The value at the first row and second column of the matrix.</param>
+        /// <param name="m13">The value at the first row and third column of the matrix.</param>
+        /// <param name="m21">The value at the second row and first column of the matrix.</param>
+        /// <param name="m22">The value at the second row and second column of the matrix.</param>
+        /// <param name="m23">The value at the second row and third column of the matrix.</param>
+        /// <param name="m31">The value at the third row and first column of the matrix.</param>
+        /// <param name="m32">The value at the third row and second column of the matrix.</param>
+        /// <param name="m33">The value at the third row and third column of the matrix.</param>
         public Matrix3(
-            dReal m00, dReal m01, dReal m02,
-            dReal m10, dReal m11, dReal m12,
-            dReal m20, dReal m21, dReal m22)
+            dReal m11, dReal m12, dReal m13,
+            dReal m21, dReal m22, dReal m23,
+            dReal m31, dReal m32, dReal m33)
         {
-            Row0.X = m00;
-            Row0.Y = m01;
-            Row0.Z = m02;
-            Row0.W = 0;
-            Row1.X = m10;
-            Row1.Y = m11;
-            Row1.Z = m12;
+            Row1.X = m11;
+            Row1.Y = m12;
+            Row1.Z = m13;
             Row1.W = 0;
-            Row2.X = m20;
-            Row2.Y = m21;
-            Row2.Z = m22;
+            Row2.X = m21;
+            Row2.Y = m22;
+            Row2.Z = m23;
             Row2.W = 0;
+            Row3.X = m31;
+            Row3.Y = m32;
+            Row3.Z = m33;
+            Row3.W = 0;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Ode.Net
         /// </returns>
         public bool Equals(Matrix3 other)
         {
-            return Row0 == other.Row0 && Row1 == other.Row1 && Row2 == other.Row2;
+            return Row1 == other.Row1 && Row2 == other.Row2 && Row3 == other.Row3;
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Ode.Net
         /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
         {
-            return Row0.GetHashCode() ^ Row1.GetHashCode() ^ Row2.GetHashCode();
+            return Row1.GetHashCode() ^ Row2.GetHashCode() ^ Row3.GetHashCode();
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Ode.Net
         /// </returns>
         public override string ToString()
         {
-            return string.Format("({0}, {1}, {2})", Row0, Row1, Row2);
+            return string.Format("({0}, {1}, {2})", Row1, Row2, Row3);
         }
 
         /// <summary>
