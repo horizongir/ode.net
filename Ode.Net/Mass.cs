@@ -62,6 +62,62 @@ namespace Ode.Net
         }
 
         /// <summary>
+        /// Returns a value indicating whether this instance is equal to a specified
+        /// <see cref="Mass"/> value.
+        /// </summary>
+        /// <param name="other">A <see cref="Mass"/> value to compare to this instance.</param>
+        /// <returns>
+        /// <b>true</b> if <paramref name="other"/> has the same mass, center of
+        /// gravity and inertia matrix as this instance; otherwise, <b>false</b>.
+        /// </returns>
+        public bool Equals(Mass other)
+        {
+            return TotalMass == other.TotalMass && Center == other.Center && Inertia == other.Inertia;
+        }
+
+        /// <summary>
+        /// Returns a value indicating whether this instance is equal to a specified object.
+        /// </summary>
+        /// <param name="obj">An object to compare with this instance.</param>
+        /// <returns>
+        /// <b>true</b> if <paramref name="obj"/> is an instance of <see cref="Mass"/> and
+        /// has the same mass, center of gravity and inertia matrix as this instance;
+        /// otherwise, <b>false</b>.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is Mass)
+            {
+                return Equals((Mass)obj);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the hash code for this instance.
+        /// </summary>
+        /// <returns>A 32-bit signed integer hash code.</returns>
+        public override int GetHashCode()
+        {
+            return TotalMass.GetHashCode() ^ Center.GetHashCode() ^ Inertia.GetHashCode();
+        }
+
+        /// <summary>
+        /// Converts the numeric value of this instance to its equivalent string representation.
+        /// </summary>
+        /// <returns>
+        /// The string representation of the mass, center of gravity and inertia matrix
+        /// of this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                "{{TotalMass: {0}, Center: {1}, Inertia: {2}}}",
+                TotalMass, Center, Inertia);
+        }
+
+        /// <summary>
         /// Adjusts the mass parameters so that the total mass is now <paramref name="newMass"/>.
         /// </summary>
         /// <param name="mass">The mass to adjust.</param>
@@ -160,62 +216,6 @@ namespace Ode.Net
         {
             result = mass1;
             NativeMethods.dMassAdd(ref result, ref mass2);
-        }
-
-        /// <summary>
-        /// Returns a value indicating whether this instance is equal to a specified
-        /// <see cref="Mass"/> value.
-        /// </summary>
-        /// <param name="other">A <see cref="Mass"/> value to compare to this instance.</param>
-        /// <returns>
-        /// <b>true</b> if <paramref name="other"/> has the same mass, center of
-        /// gravity and inertia matrix as this instance; otherwise, <b>false</b>.
-        /// </returns>
-        public bool Equals(Mass other)
-        {
-            return TotalMass == other.TotalMass && Center == other.Center && Inertia == other.Inertia;
-        }
-
-        /// <summary>
-        /// Returns a value indicating whether this instance is equal to a specified object.
-        /// </summary>
-        /// <param name="obj">An object to compare with this instance.</param>
-        /// <returns>
-        /// <b>true</b> if <paramref name="obj"/> is an instance of <see cref="Mass"/> and
-        /// has the same mass, center of gravity and inertia matrix as this instance;
-        /// otherwise, <b>false</b>.
-        /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (obj is Mass)
-            {
-                return Equals((Mass)obj);
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Returns the hash code for this instance.
-        /// </summary>
-        /// <returns>A 32-bit signed integer hash code.</returns>
-        public override int GetHashCode()
-        {
-            return TotalMass.GetHashCode() ^ Center.GetHashCode() ^ Inertia.GetHashCode();
-        }
-
-        /// <summary>
-        /// Converts the numeric value of this instance to its equivalent string representation.
-        /// </summary>
-        /// <returns>
-        /// The string representation of the mass, center of gravity and inertia matrix
-        /// of this instance.
-        /// </returns>
-        public override string ToString()
-        {
-            return string.Format(
-                "{{TotalMass: {0}, Center: {1}, Inertia: {2}}}",
-                TotalMass, Center, Inertia);
         }
 
         /// <summary>
