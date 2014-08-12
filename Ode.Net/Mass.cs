@@ -62,78 +62,79 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Sets all the mass parameters to zero.
+        /// Adjusts the mass parameters so that the total mass is now <paramref name="newMass"/>.
         /// </summary>
-        public void SetZero()
+        /// <param name="mass">The mass to adjust.</param>
+        /// <param name="newMass">The new total mass of the rigid body.</param>
+        /// <returns>The adjusted mass.</returns>
+        public static Mass Adjust(Mass mass, dReal newMass)
         {
-            NativeMethods.dMassSetZero(ref this);
+            NativeMethods.dMassAdjust(ref mass, newMass);
+            return mass;
         }
 
         /// <summary>
         /// Adjusts the mass parameters so that the total mass is now <paramref name="newMass"/>.
         /// </summary>
+        /// <param name="mass">The mass to adjust.</param>
         /// <param name="newMass">The new total mass of the rigid body.</param>
-        public void Adjust(dReal newMass)
+        /// <param name="result">The adjusted mass.</param>
+        public static void Adjust(ref Mass mass, dReal newMass, out Mass result)
         {
-            NativeMethods.dMassAdjust(ref this, newMass);
+            result = mass;
+            NativeMethods.dMassAdjust(ref result, newMass);
         }
 
         /// <summary>
         /// Adjusts the mass parameters to represent a mass object displaced by the specified
         /// translation relative to the body frame.
         /// </summary>
+        /// <param name="mass">The mass to translate.</param>
         /// <param name="translation">The displacement vector in body frame.</param>
-        public void Translate(ref Vector3 translation)
+        /// <returns>The displaced mass.</returns>
+        public static Mass Translate(Mass mass, Vector3 translation)
         {
-            NativeMethods.dMassTranslate(ref this, translation.X, translation.Y, translation.Z);
+            NativeMethods.dMassTranslate(ref mass, translation.X, translation.Y, translation.Z);
+            return mass;
         }
 
         /// <summary>
         /// Adjusts the mass parameters to represent a mass object displaced by the specified
         /// translation relative to the body frame.
         /// </summary>
+        /// <param name="mass">The mass to translate.</param>
         /// <param name="translation">The displacement vector in body frame.</param>
-        public void Translate(Vector3 translation)
+        /// <param name="result">The displaced mass.</param>
+        public static void Translate(ref Mass mass, ref Vector3 translation, out Mass result)
         {
-            NativeMethods.dMassTranslate(ref this, translation.X, translation.Y, translation.Z);
+            result = mass;
+            NativeMethods.dMassTranslate(ref result, translation.X, translation.Y, translation.Z);
         }
 
         /// <summary>
         /// Adjusts the mass parameters to represent a mass object rotated by the specified
         /// rotation relative to the body frame.
         /// </summary>
+        /// <param name="mass">The mass to rotate.</param>
         /// <param name="rotation">The rotation matrix in body frame.</param>
-        public void Rotate(ref Matrix3 rotation)
+        /// <returns>The rotated mass.</returns>
+        public static Mass Rotate(Mass mass, Matrix3 rotation)
         {
-            NativeMethods.dMassRotate(ref this, ref rotation);
+            NativeMethods.dMassRotate(ref mass, ref rotation);
+            return mass;
         }
 
         /// <summary>
         /// Adjusts the mass parameters to represent a mass object rotated by the specified
         /// rotation relative to the body frame.
         /// </summary>
+        /// <param name="mass">The mass to rotate.</param>
         /// <param name="rotation">The rotation matrix in body frame.</param>
-        public void Rotate(Matrix3 rotation)
+        /// <param name="result">The rotated mass.</param>
+        public static void Rotate(ref Mass mass, ref Matrix3 rotation, out Mass result)
         {
-            NativeMethods.dMassRotate(ref this, ref rotation);
-        }
-
-        /// <summary>
-        /// Adds the specified <paramref name="mass"/> to this instance.
-        /// </summary>
-        /// <param name="mass">The mass to add.</param>
-        public void Add(ref Mass mass)
-        {
-            NativeMethods.dMassAdd(ref this, ref mass);
-        }
-
-        /// <summary>
-        /// Adds the specified <paramref name="mass"/> to this instance.
-        /// </summary>
-        /// <param name="mass">The mass to add.</param>
-        public void Add(Mass mass)
-        {
-            NativeMethods.dMassAdd(ref this, ref mass);
+            result = mass;
+            NativeMethods.dMassRotate(ref result, ref rotation);
         }
 
         /// <summary>

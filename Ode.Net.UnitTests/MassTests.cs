@@ -20,8 +20,7 @@ namespace Ode.Net.UnitTests
         [TestMethod]
         public void IsValid_ZeroMass_ReturnsFalse()
         {
-            var mass = Mass.CreateSphereTotal(DefaultMass, DefaultParameter);
-            mass.SetZero();
+            var mass = new Mass();
             Assert.IsFalse(mass.IsValid);
         }
 
@@ -31,17 +30,9 @@ namespace Ode.Net.UnitTests
             const dReal NewMass = 2;
             var mass = Mass.CreateSphereTotal(DefaultMass, DefaultParameter);
             Assert.AreEqual(DefaultMass, mass.TotalMass);
-            mass.Adjust(NewMass);
-            Assert.AreEqual(NewMass, mass.TotalMass);
-        }
-
-        [TestMethod]
-        public void SetZero_ZeroMassParameters()
-        {
-            var mass = Mass.CreateSphereTotal(DefaultMass, DefaultParameter);
-            Assert.AreNotEqual(0, mass.TotalMass);
-            mass.SetZero();
-            Assert.AreEqual(0, mass.TotalMass);
+            mass = Mass.Adjust(mass, NewMass);
+            Mass.Adjust(ref mass, NewMass * 2, out mass);
+            Assert.AreEqual(NewMass * 2, mass.TotalMass);
         }
     }
 }
