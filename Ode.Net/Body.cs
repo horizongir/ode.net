@@ -351,7 +351,7 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add force at the center of mass of the body.
+        /// Adds force at the center of mass of the body.
         /// </summary>
         /// <param name="force">The force vector in the world coordinate system.</param>
         public void AddForce(Vector3 force)
@@ -360,7 +360,18 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add torque at the center of mass of the body.
+        /// Adds force at the center of mass of the body.
+        /// </summary>
+        /// <param name="fx">The x-component of the force vector in the world coordinate system.</param>
+        /// <param name="fy">The y-component of the force vector in the world coordinate system.</param>
+        /// <param name="fz">The z-component of the force vector in the world coordinate system.</param>
+        public void AddForce(dReal fx, dReal fy, dReal fz)
+        {
+            NativeMethods.dBodyAddForce(id, fx, fy, fz);
+        }
+
+        /// <summary>
+        /// Adds torque at the center of mass of the body.
         /// </summary>
         /// <param name="torque">The torque vector in the world coordinate system.</param>
         public void AddTorque(Vector3 torque)
@@ -369,7 +380,18 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add force at the center of mass of the body.
+        /// Adds torque at the center of mass of the body.
+        /// </summary>
+        /// <param name="fx">The x-component of the torque vector in the world coordinate system.</param>
+        /// <param name="fy">The y-component of the torque vector in the world coordinate system.</param>
+        /// <param name="fz">The z-component of the torque vector in the world coordinate system.</param>
+        public void AddTorque(dReal fx, dReal fy, dReal fz)
+        {
+            NativeMethods.dBodyAddTorque(id, fx, fy, fz);
+        }
+
+        /// <summary>
+        /// Adds force at the center of mass of the body.
         /// </summary>
         /// <param name="force">The force vector in the body's coordinate system.</param>
         public void AddRelativeForce(Vector3 force)
@@ -378,7 +400,18 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add torque at the center of mass of the body.
+        /// Adds force at the center of mass of the body.
+        /// </summary>
+        /// <param name="fx">The x-component of the force vector in the body's coordinate system.</param>
+        /// <param name="fy">The y-component of the force vector in the body's coordinate system.</param>
+        /// <param name="fz">The z-component of the force vector in the body's coordinate system.</param>
+        public void AddRelativeForce(dReal fx, dReal fy, dReal fz)
+        {
+            NativeMethods.dBodyAddRelForce(id, fx, fy, fz);
+        }
+
+        /// <summary>
+        /// Adds torque at the center of mass of the body.
         /// </summary>
         /// <param name="torque">The torque vector in the body's coordinate system.</param>
         public void AddRelativeTorque(Vector3 torque)
@@ -387,7 +420,18 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add force to the body applied at the specified position.
+        /// Adds torque at the center of mass of the body.
+        /// </summary>
+        /// <param name="fx">The x-component of the torque vector in the body's coordinate system.</param>
+        /// <param name="fy">The y-component of the torque vector in the body's coordinate system.</param>
+        /// <param name="fz">The z-component of the torque vector in the body's coordinate system.</param>
+        public void AddRelativeTorque(dReal fx, dReal fy, dReal fz)
+        {
+            NativeMethods.dBodyAddRelTorque(id, fx, fy, fz);
+        }
+
+        /// <summary>
+        /// Adds force to the body applied at the specified position.
         /// </summary>
         /// <param name="force">The force vector in the world coordinate system.</param>
         /// <param name="position">The point of application in global coordinates.</param>
@@ -399,7 +443,23 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add force to the body applied at the specified position.
+        /// Adds force to the body applied at the specified position.
+        /// </summary>
+        /// <param name="fx">The x-component of the force vector in the world coordinate system.</param>
+        /// <param name="fy">The y-component of the force vector in the world coordinate system.</param>
+        /// <param name="fz">The z-component of the force vector in the world coordinate system.</param>
+        /// <param name="px">The x-component of the application point in global coordinates.</param>
+        /// <param name="py">The y-component of the application point in global coordinates.</param>
+        /// <param name="pz">The z-component of the application point in global coordinates.</param>
+        public void AddForceAtPosition(
+            dReal fx, dReal fy, dReal fz,
+            dReal px, dReal py, dReal pz)
+        {
+            NativeMethods.dBodyAddForceAtPos(id, fx, fy, fz, px, py, pz);
+        }
+
+        /// <summary>
+        /// Adds force to the body applied at the specified position.
         /// </summary>
         /// <param name="force">The force vector in the world coordinate system.</param>
         /// <param name="position">The point of application in body relative coordinates.</param>
@@ -411,7 +471,23 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add force to the body applied at the specified position.
+        /// Adds force to the body applied at the specified position.
+        /// </summary>
+        /// <param name="fx">The x-component of the force vector in the world coordinate system.</param>
+        /// <param name="fy">The y-component of the force vector in the world coordinate system.</param>
+        /// <param name="fz">The z-component of the force vector in the world coordinate system.</param>
+        /// <param name="px">The x-component of the application point in body relative coordinates.</param>
+        /// <param name="py">The y-component of the application point in body relative coordinates.</param>
+        /// <param name="pz">The z-component of the application point in body relative coordinates.</param>
+        public void AddForceAtRelativePosition(
+            dReal fx, dReal fy, dReal fz,
+            dReal px, dReal py, dReal pz)
+        {
+            NativeMethods.dBodyAddForceAtRelPos(id, fx, fy, fz, px, py, pz);
+        }
+
+        /// <summary>
+        /// Adds force to the body applied at the specified position.
         /// </summary>
         /// <param name="force">The force vector in the body's coordinate system.</param>
         /// <param name="position">The point of application in global coordinates.</param>
@@ -423,7 +499,23 @@ namespace Ode.Net
         }
 
         /// <summary>
-        /// Add force to the body applied at the specified position.
+        /// Adds force to the body applied at the specified position.
+        /// </summary>
+        /// <param name="fx">The x-component of the force vector in the body's coordinate system.</param>
+        /// <param name="fy">The y-component of the force vector in the body's coordinate system.</param>
+        /// <param name="fz">The z-component of the force vector in the body's coordinate system.</param>
+        /// <param name="px">The x-component of the application point in global coordinates.</param>
+        /// <param name="py">The y-component of the application point in global coordinates.</param>
+        /// <param name="pz">The z-component of the application point in global coordinates.</param>
+        public void AddRelativeForceAtPosition(
+            dReal fx, dReal fy, dReal fz,
+            dReal px, dReal py, dReal pz)
+        {
+            NativeMethods.dBodyAddRelForceAtPos(id, fx, fy, fz, px, py, pz);
+        }
+
+        /// <summary>
+        /// Adds force to the body applied at the specified position.
         /// </summary>
         /// <param name="force">The force vector in the body's coordinate system.</param>
         /// <param name="position">The point of application in body relative coordinates.</param>
@@ -432,6 +524,22 @@ namespace Ode.Net
             NativeMethods.dBodyAddRelForceAtRelPos(
                 id, force.X, force.Y, force.Z,
                 position.X, position.Y, position.Z);
+        }
+
+        /// <summary>
+        /// Adds force to the body applied at the specified position.
+        /// </summary>
+        /// <param name="fx">The x-component of the force vector in the body's coordinate system.</param>
+        /// <param name="fy">The y-component of the force vector in the body's coordinate system.</param>
+        /// <param name="fz">The z-component of the force vector in the body's coordinate system.</param>
+        /// <param name="px">The x-component of the application point in body relative coordinates.</param>
+        /// <param name="py">The y-component of the application point in body relative coordinates.</param>
+        /// <param name="pz">The z-component of the application point in body relative coordinates.</param>
+        public void AddRelativeForceAtRelativePosition(
+            dReal fx, dReal fy, dReal fz,
+            dReal px, dReal py, dReal pz)
+        {
+            NativeMethods.dBodyAddRelForceAtRelPos(id, fx, fy, fz, px, py, pz);
         }
 
         /// <summary>
