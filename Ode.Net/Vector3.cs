@@ -123,6 +123,229 @@ namespace Ode.Net
         }
 
         /// <summary>
+        /// Returns a new vector pointing in the opposite direction of the
+        /// source vector.
+        /// </summary>
+        /// <param name="value">The source vector.</param>
+        /// <returns>A vector pointing in the opposite direction of the source vector.</returns>
+        public static Vector3 Negate(Vector3 value)
+        {
+            Vector3 result;
+            Negate(ref value, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Returns a new vector pointing in the opposite direction of the
+        /// source vector.
+        /// </summary>
+        /// <param name="value">The source vector.</param>
+        /// <param name="result">A vector pointing in the opposite direction of the source vector.</param>
+        public static void Negate(ref Vector3 value, out Vector3 result)
+        {
+            result.X = -value.X;
+            result.Y = -value.Y;
+            result.Z = -value.Z;
+            result.W = 0;
+        }
+
+        /// <summary>
+        /// Adds two vectors and returns the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The first vector to add.</param>
+        /// <param name="value2">The second vector to add.</param>
+        /// <returns>The sum of the two vectors.</returns>
+        public static Vector3 Add(Vector3 value1, Vector3 value2)
+        {
+            Vector3 result;
+            Add(ref value1, ref value2, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Adds two vectors and returns the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The first vector to add.</param>
+        /// <param name="value2">The second vector to add.</param>
+        /// <param name="result">The sum of the two vectors.</param>
+        public static void Add(ref Vector3 value1, ref Vector3 value2, out Vector3 result)
+        {
+            result.X = value1.X + value2.X;
+            result.Y = value1.Y + value2.Y;
+            result.Z = value1.Z + value2.Z;
+            result.W = 0;
+        }
+
+        /// <summary>
+        /// Subtracts a vector from another vector and returns the result as a new
+        /// <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The vector from which the other vector will be subtracted.</param>
+        /// <param name="value2">The vector that is to be subtracted.</param>
+        /// <returns>The result of the subtraction.</returns>
+        public static Vector3 Subtract(Vector3 value1, Vector3 value2)
+        {
+            Vector3 result;
+            Subtract(ref value1, ref value2, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Subtracts a vector from another vector and returns the result as a new
+        /// <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The vector from which the other vector will be subtracted.</param>
+        /// <param name="value2">The vector that is to be subtracted.</param>
+        /// <param name="result">The result of the subtraction.</param>
+        public static void Subtract(ref Vector3 value1, ref Vector3 value2, out Vector3 result)
+        {
+            result.X = value1.X - value2.X;
+            result.Y = value1.Y - value2.Y;
+            result.Z = value1.Z - value2.Z;
+            result.W = 0;
+        }
+
+        /// <summary>
+        /// Multiplies a vector by a scalar value and returns the result as
+        /// a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The source vector.</param>
+        /// <param name="value2">The scalar value.</param>
+        /// <returns>The result of the multiplication.</returns>
+        public static Vector3 Multiply(Vector3 value1, dReal value2)
+        {
+            Vector3 result;
+            Multiply(ref value1, value2, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Multiplies a vector by a scalar value and returns the result as
+        /// a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The source vector.</param>
+        /// <param name="value2">The scalar value.</param>
+        /// <param name="result">The result of the multiplication.</param>
+        public static void Multiply(ref Vector3 value1, dReal value2, out Vector3 result)
+        {
+            result.X = value1.X * value2;
+            result.Y = value1.Y * value2;
+            result.Z = value1.Z * value2;
+            result.W = 0;
+        }
+
+        /// <summary>
+        /// Multiplies the components of two vectors by each other and returns
+        /// the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The first vector to multiply the components of.</param>
+        /// <param name="value2">The second vector to multiply the components of.</param>
+        /// <returns>The result of the multiplication.</returns>
+        public static Vector3 Multiply(Vector3 value1, Vector3 value2)
+        {
+            Vector3 result;
+            Multiply(ref value1, ref value2, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Multiplies the components of two vectors by each other and returns
+        /// the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The first vector to multiply the components of.</param>
+        /// <param name="value2">The second vector to multiply the components of.</param>
+        /// <param name="result">The result of the multiplication.</param>
+        public static void Multiply(ref Vector3 value1, ref Vector3 value2, out Vector3 result)
+        {
+            result.X = value1.X * value2.X;
+            result.Y = value1.Y * value2.Y;
+            result.Z = value1.Z * value2.Z;
+            result.W = 0;
+        }
+
+        /// <summary>
+        /// Divides a vector by a scalar value and returns the result as
+        /// a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The source vector.</param>
+        /// <param name="value2">The scalar value.</param>
+        /// <returns>The result of the division.</returns>
+        public static Vector3 Divide(Vector3 value1, dReal value2)
+        {
+            Vector3 result;
+            Divide(ref value1, value2, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Divides a vector by a scalar value and returns the result as
+        /// a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The source vector.</param>
+        /// <param name="value2">The scalar value.</param>
+        /// <param name="result">The result of the division.</param>
+        public static void Divide(ref Vector3 value1, dReal value2, out Vector3 result)
+        {
+            result.X = value1.X / value2;
+            result.Y = value1.Y / value2;
+            result.Z = value1.Z / value2;
+            result.W = 0;
+        }
+
+        /// <summary>
+        /// Divides the components of a vector by the components of another vector
+        /// and returns the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The vector whose components will be divided.</param>
+        /// <param name="value2">The divisor vector.</param>
+        /// <returns>The result of the division.</returns>
+        public static Vector3 Divide(Vector3 value1, Vector3 value2)
+        {
+            Vector3 result;
+            Divide(ref value1, ref value2, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Divides the components of a vector by the components of another vector
+        /// and returns the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="value1">The vector whose components will be divided.</param>
+        /// <param name="value2">The divisor vector.</param>
+        /// <param name="result">The result of the division.</param>
+        public static void Divide(ref Vector3 value1, ref Vector3 value2, out Vector3 result)
+        {
+            result.X = value1.X / value2.X;
+            result.Y = value1.Y / value2.Y;
+            result.Z = value1.Z / value2.Z;
+            result.W = 0;
+        }
+
+        /// <summary>
+        /// Calculates the dot product of two vectors.
+        /// </summary>
+        /// <param name="value1">The first source vector.</param>
+        /// <param name="value2">The second source vector.</param>
+        /// <returns>The dot product of the two source vectors.</returns>
+        public static float Dot(Vector3 value1, Vector3 value2)
+        {
+            float result;
+            Dot(ref value1, ref value2, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the dot product of two vectors.
+        /// </summary>
+        /// <param name="value1">The first source vector.</param>
+        /// <param name="value2">The second source vector.</param>
+        /// <param name="result">The dot product of the two source vectors.</param>
+        public static void Dot(ref Vector3 value1, ref Vector3 value2, out float result)
+        {
+            result = value1.X * value2.X + value1.Y * value2.Y + value1.Z * value2.Z;
+        }
+
+        /// <summary>
         /// Tests whether two <see cref="Vector3"/> structures are equal.
         /// </summary>
         /// <param name="left">
@@ -157,6 +380,144 @@ namespace Ode.Net
         public static bool operator !=(Vector3 left, Vector3 right)
         {
             return !left.Equals(right);
+        }
+
+        /// <summary>
+        /// Returns a new vector pointing in the opposite direction of the
+        /// source vector.
+        /// </summary>
+        /// <param name="value">The source vector.</param>
+        /// <returns>A vector pointing in the opposite direction of the source vector.</returns>
+        public static Vector3 operator -(Vector3 value)
+        {
+            Vector3 result;
+            Negate(ref value, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Adds two vectors and returns the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="left">
+        /// The <see cref="Vector3"/> structure on the left of the addition operator.
+        /// </param>
+        /// <param name="right">
+        /// The <see cref="Vector3"/> structure on the right of the addition operator.
+        /// </param>
+        /// <returns>The sum of the two vectors.</returns>
+        public static Vector3 operator +(Vector3 left, Vector3 right)
+        {
+            Vector3 result;
+            Add(ref left, ref right, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Subtracts a vector from another vector and returns the result as a new
+        /// <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="left">
+        /// The <see cref="Vector3"/> structure on the left of the subtraction operator.
+        /// </param>
+        /// <param name="right">
+        /// The <see cref="Vector3"/> structure on the right of the subtraction operator.
+        /// </param>
+        /// <returns>The result of the subtraction.</returns>
+        public static Vector3 operator -(Vector3 left, Vector3 right)
+        {
+            Vector3 result;
+            Subtract(ref left, ref right, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Multiplies a vector by a scalar value and returns the result as
+        /// a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="left">
+        /// The scalar value on the left of the multiplication operator.
+        /// </param>
+        /// <param name="right">
+        /// The <see cref="Vector3"/> structure on the right of the multiplication operator.
+        /// </param>
+        /// <returns>The result of the multiplication.</returns>
+        public static Vector3 operator *(dReal left, Vector3 right)
+        {
+            Vector3 result;
+            Multiply(ref right, left, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Multiplies a vector by a scalar value and returns the result as
+        /// a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="left">
+        /// The <see cref="Vector3"/> structure on the left of the multiplication operator.
+        /// </param>
+        /// <param name="right">
+        /// The scalar value on the right of the multiplication operator.
+        /// </param>
+        /// <returns>The result of the multiplication.</returns>
+        public static Vector3 operator *(Vector3 left, dReal right)
+        {
+            Vector3 result;
+            Multiply(ref left, right, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Multiplies the components of two vectors by each other and returns
+        /// the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="left">
+        /// The <see cref="Vector3"/> structure on the left of the multiplication operator.
+        /// </param>
+        /// <param name="right">
+        /// The <see cref="Vector3"/> structure on the right of the multiplication operator.
+        /// </param>
+        /// <returns>The result of the multiplication.</returns>
+        public static Vector3 operator *(Vector3 left, Vector3 right)
+        {
+            Vector3 result;
+            Multiply(ref left, ref right, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Divides a vector by a scalar value and returns the result as
+        /// a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="left">
+        /// The <see cref="Vector3"/> structure on the left of the division operator.
+        /// </param>
+        /// <param name="right">
+        /// The scalar value on the right of the division operator.
+        /// </param>
+        /// <returns>The result of the division.</returns>
+        public static Vector3 operator /(Vector3 left, dReal right)
+        {
+            Vector3 result;
+            Divide(ref left, right, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Divides the components of a vector by the components of another vector
+        /// and returns the result as a new <see cref="Vector3"/>.
+        /// </summary>
+        /// <param name="left">
+        /// The <see cref="Vector3"/> structure on the left of the division operator.
+        /// </param>
+        /// <param name="right">
+        /// The <see cref="Vector3"/> structure on the right of the division operator.
+        /// </param>
+        /// <returns>The result of the division.</returns>
+        public static Vector3 operator /(Vector3 left, Vector3 right)
+        {
+            Vector3 result;
+            Divide(ref left, ref right, out result);
+            return result;
         }
     }
 }
