@@ -357,13 +357,13 @@ namespace Ode.Net.Native
         );
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dBodySetFiniteRotationMode(dBodyID b, int mode);
+        internal static extern void dBodySetFiniteRotationMode(dBodyID b, RotationMode mode);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dBodySetFiniteRotationAxis(dBodyID b, dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dBodyGetFiniteRotationMode(dBodyID b);
+        internal static extern RotationMode dBodyGetFiniteRotationMode(dBodyID b);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dBodyGetFiniteRotationAxis(dBodyID b, out Vector3 result);

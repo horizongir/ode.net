@@ -70,4 +70,22 @@ namespace Ode.Net
         /// </summary>
         Z = 3
     }
+
+    /// <summary>
+    /// Specifies the rotation mode for the axis of a rigid body.
+    /// </summary>
+    public enum RotationMode
+    {
+        /// <summary>
+        /// Specifies an infinitesimal rotation mode. It is fast to compute,
+        /// but it can occasionally cause inaccuracies at high rotation speeds.
+        /// </summary>
+        Infinitesimal = 0,
+
+        /// <summary>
+        /// Specifies a finite rotation mode. It is more costly to compute,
+        /// but more accurate for high speed rotations.
+        /// </summary>
+        Finite
+    }
 }
