@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ode.Net.Geoms;
+using Ode.Net.Joints;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -448,6 +450,642 @@ namespace Ode.Net.Native
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dBodySetGyroscopicMode(dBodyID b, int enabled);
+
+        #endregion
+
+        #region Joints
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateBall(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateHinge(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateSlider(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateContact(dWorldID w, dJointGroupID g, ref Contact c);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateHinge2(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateUniversal(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreatePR(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreatePU(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreatePiston(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateFixed(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateNull(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateAMotor(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateLMotor(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreatePlane2D(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateDBall(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateDHinge(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dJointCreateTransmission(dWorldID w, dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointDestroy(IntPtr j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointGroupID dJointGroupCreate(int max_size);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGroupDestroy(IntPtr g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGroupEmpty(dJointGroupID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dJointGetNumBodies(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAttach(dJointID j, dBodyID body1, dBodyID body2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointEnable(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointDisable(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dJointIsEnabled(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetData(dJointID j, IntPtr data);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dJointGetData(IntPtr j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern JointType dJointGetType(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dBodyID dJointGetBody(dJointID j, int index);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetFeedback(dJointID j, dJointFeedback f);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointFeedback dJointGetFeedback(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetBallAnchor(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetBallAnchor2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetBallParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHingeAnchor(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHingeAnchorDelta(dJointID j, dReal x, dReal y, dReal z, dReal ax, dReal ay, dReal az);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHingeAxis(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHingeAxisOffset(dJointID j, dReal x, dReal y, dReal z, dReal angle);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHingeParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddHingeTorque(dJointID joint, dReal torque);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetSliderAxis(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetSliderAxisDelta(dJointID j, dReal x, dReal y, dReal z, dReal ax, dReal ay, dReal az);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetSliderParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddSliderForce(dJointID joint, dReal force);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHinge2Anchor(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHinge2Axis1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHinge2Axis2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetHinge2Param(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddHinge2Torques(dJointID joint, dReal torque1, dReal torque2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetUniversalAnchor(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetUniversalAxis1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetUniversalAxis1Offset(dJointID j, dReal x, dReal y, dReal z,
+                                                    dReal offset1, dReal offset2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetUniversalAxis2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetUniversalAxis2Offset(dJointID j, dReal x, dReal y, dReal z,
+                                                    dReal offset1, dReal offset2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetUniversalParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddUniversalTorques(dJointID joint, dReal torque1, dReal torque2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPRAnchor(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPRAxis1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPRAxis2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPRParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddPRTorque(dJointID j, dReal torque);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUAnchor(dJointID j, dReal x, dReal y, dReal z);
+
+        [Obsolete]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUAnchorDelta(dJointID j, dReal x, dReal y, dReal z,
+                                                                dReal dx, dReal dy, dReal dz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUAnchorOffset(dJointID j, dReal x, dReal y, dReal z,
+                                             dReal dx, dReal dy, dReal dz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUAxis1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUAxis2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUAxis3(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUAxisP(dJointID id, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPUParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddPUTorque(dJointID j, dReal torque);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPistonAnchor(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPistonAnchorOffset(dJointID j, dReal x, dReal y, dReal z,
+                                                 dReal dx, dReal dy, dReal dz);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPistonAxis(dJointID j, dReal x, dReal y, dReal z);
+
+        [Obsolete]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPistonAxisDelta(dJointID j, dReal x, dReal y, dReal z, dReal ax, dReal ay, dReal az);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPistonParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddPistonForce(dJointID joint, dReal force);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetFixed(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetFixedParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetAMotorNumAxes(dJointID j, int num);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetAMotorAxis(dJointID j, int anum, int rel,
+                      dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetAMotorAngle(dJointID j, int anum, dReal angle);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetAMotorParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetAMotorMode(dJointID j, int mode);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointAddAMotorTorques(dJointID j, dReal torque1, dReal torque2, dReal torque3);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetLMotorNumAxes(dJointID j, int num);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetLMotorAxis(dJointID j, int anum, int rel, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetLMotorParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPlane2DXParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPlane2DYParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetPlane2DAngleParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetBallAnchor(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetBallAnchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetBallParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetHingeAnchor(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetHingeAnchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetHingeAxis(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetHingeParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetHingeAngle(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetHingeAngleRate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetSliderPosition(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetSliderPositionRate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetSliderAxis(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetSliderParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetHinge2Anchor(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetHinge2Anchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetHinge2Axis1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetHinge2Axis2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetHinge2Param(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetHinge2Angle1(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetHinge2Angle1Rate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetHinge2Angle2Rate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetUniversalAnchor(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetUniversalAnchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetUniversalAxis1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetUniversalAxis2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetUniversalParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetUniversalAngles(dJointID j, out dReal angle1, out dReal angle2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetUniversalAngle1(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetUniversalAngle2(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetUniversalAngle1Rate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetUniversalAngle2Rate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPRAnchor(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPRPosition(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPRPositionRate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPRAngle(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPRAngleRate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPRAxis1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPRAxis2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPRParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPUAnchor(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPUPosition(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPUPositionRate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPUAxis1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPUAxis2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPUAxis3(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPUAxisP(dJointID id, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPUAngles(dJointID j, out dReal angle1, out dReal angle2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPUAngle1(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPUAngle1Rate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPUAngle2(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPUAngle2Rate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPUParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPistonPosition(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPistonPositionRate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPistonAngle(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPistonAngleRate(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPistonAnchor(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPistonAnchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetPistonAxis(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetPistonParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dJointGetAMotorNumAxes(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetAMotorAxis(dJointID j, int anum, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dJointGetAMotorAxisRel(dJointID j, int anum);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetAMotorAngle(dJointID j, int anum);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetAMotorAngleRate(dJointID j, int anum);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetAMotorParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dJointGetAMotorMode(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dJointGetLMotorNumAxes(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetLMotorAxis(dJointID j, int anum, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetLMotorParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetFixedParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetTransmissionContactPoint1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetTransmissionContactPoint2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionAxis1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetTransmissionAxis1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionAxis2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetTransmissionAxis2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionAnchor1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetTransmissionAnchor1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionAnchor2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetTransmissionAnchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetTransmissionParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionMode(dJointID j, int mode);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dJointGetTransmissionMode(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionRatio(dJointID j, dReal ratio);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetTransmissionRatio(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionAxis(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetTransmissionAxis(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetTransmissionAngle1(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetTransmissionAngle2(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetTransmissionRadius1(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetTransmissionRadius2(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionRadius1(dJointID j, dReal radius);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionRadius2(dJointID j, dReal radius);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetTransmissionBacklash(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetTransmissionBacklash(dJointID j, dReal backlash);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetDBallAnchor1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetDBallAnchor2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetDBallAnchor1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetDBallAnchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetDBallDistance(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetDBallParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetDBallParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetDHingeAxis(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetDHingeAxis(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetDHingeAnchor1(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetDHingeAnchor2(dJointID j, dReal x, dReal y, dReal z);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetDHingeAnchor1(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointGetDHingeAnchor2(dJointID j, out Vector3 result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetDHingeDistance(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dJointSetDHingeParam(dJointID j, int parameter, dReal value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dReal dJointGetDHingeParam(dJointID j, int parameter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dJointID dConnectingJoint(dBodyID body1, dBodyID body2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dConnectingJointList(dBodyID body1, dBodyID body2, dJointID[] joint_list);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dAreConnected(dBodyID body1, dBodyID body2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dAreConnectedExcluding(dBodyID body1, dBodyID body2, int joint_type);
 
         #endregion
     }

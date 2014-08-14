@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 
 namespace Ode.Net.Native
 {
-    class dJointID : SafeHandleZeroOrMinusOneIsInvalid
+    class dJointGroupID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        internal static readonly dJointID Null = new NulldJointID();
+        internal static readonly dJointGroupID Null = new NulldJointGroupID();
 
-        internal dJointID()
+        internal dJointGroupID()
             : base(true)
         {
         }
 
-        private dJointID(bool ownsHandle)
+        private dJointGroupID(bool ownsHandle)
             : base(ownsHandle)
         {
         }
 
         protected override bool ReleaseHandle()
         {
-            NativeMethods.dJointDestroy(handle);
+            NativeMethods.dJointGroupDestroy(handle);
             return true;
         }
 
-        class NulldJointID : dJointID
+        class NulldJointGroupID : dJointGroupID
         {
-            public NulldJointID()
+            public NulldJointGroupID()
                 : base(false)
             {
             }
