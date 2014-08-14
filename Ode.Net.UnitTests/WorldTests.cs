@@ -26,14 +26,14 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetGravity_ReturnsCorrectValue()
+        public void Gravity_GetSet_ReturnsCorrectValue()
         {
             world.Gravity = Vector3.One;
             Assert.AreEqual(Vector3.One, world.Gravity);
         }
 
         [TestMethod]
-        public void GetSetErp_ReturnsCorrectValue()
+        public void Erp_GetSet_ReturnsCorrectValue()
         {
             const dReal Erp = (dReal)0.1;
             world.Erp = Erp;
@@ -41,7 +41,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetCfm_ReturnsCorrectValue()
+        public void Cfm_GetSet_ReturnsCorrectValue()
         {
             const dReal Cfm = (dReal)0.5;
             world.Cfm = Cfm;
@@ -49,7 +49,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetStepIslandsProcessingMaxThreadCount_ReturnsCorrectValue()
+        public void StepIslandsProcessingMaxThreadCount_GetSet_ReturnsCorrectValue()
         {
             const int MaxThreads = 2;
             world.StepIslandsProcessingMaxThreadCount = MaxThreads;
@@ -127,7 +127,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetQuickStepNumIterations_ReturnsCorrectValue()
+        public void QuickStepNumIterations_GetSet_ReturnsCorrectValue()
         {
             var value = world.QuickStepNumIterations;
             world.QuickStepNumIterations = value + 1;
@@ -136,7 +136,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetQuickStepW_ReturnsCorrectValue()
+        public void QuickStepW_GetSet_ReturnsCorrectValue()
         {
             var value = world.QuickStepW;
             world.QuickStepW = value + 1;
@@ -145,7 +145,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetContactMaxCorrectingVelocity_ReturnsCorrectValue()
+        public void ContactMaxCorrectingVelocity_GetSet_ReturnsCorrectValue()
         {
             var value = world.ContactMaxCorrectingVelocity;
             world.ContactMaxCorrectingVelocity = value + 1;
@@ -154,7 +154,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetContactSurfaceLayer_ReturnsCorrectValue()
+        public void ContactSurfaceLayer_GetSet_ReturnsCorrectValue()
         {
             var value = world.ContactSurfaceLayer;
             world.ContactSurfaceLayer = value + 1;
@@ -163,7 +163,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAutoDisableLinearThreshold_ReturnsCorrectValue()
+        public void AutoDisableLinearThreshold_GetSet_ReturnsCorrectValue()
         {
             var value = world.AutoDisableLinearThreshold;
             world.AutoDisableLinearThreshold = value + 1;
@@ -172,7 +172,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAutoDisableAngularThreshold_ReturnsCorrectValue()
+        public void AutoDisableAngularThreshold_GetSet_ReturnsCorrectValue()
         {
             var value = world.AutoDisableAngularThreshold;
             world.AutoDisableAngularThreshold = value + 1;
@@ -181,7 +181,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAutoDisableAverageSamplesCount_ReturnsCorrectValue()
+        public void AutoDisableAverageSamplesCount_GetSet_ReturnsCorrectValue()
         {
             var value = world.AutoDisableAverageSamplesCount;
             world.AutoDisableAverageSamplesCount = value + 1;
@@ -190,7 +190,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAutoDisableSteps_ReturnsCorrectValue()
+        public void AutoDisableSteps_GetSet_ReturnsCorrectValue()
         {
             var value = world.AutoDisableSteps;
             world.AutoDisableSteps = value + 1;
@@ -199,7 +199,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAutoDisableTime_ReturnsCorrectValue()
+        public void AutoDisableTime_GetSet_ReturnsCorrectValue()
         {
             var value = world.AutoDisableTime;
             world.AutoDisableTime = value + 1;
@@ -208,7 +208,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAutoDisable_ReturnsCorrectValue()
+        public void AutoDisable_GetSet_ReturnsCorrectValue()
         {
             var value = world.AutoDisable;
             world.AutoDisable = !value;
@@ -217,7 +217,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetLinearDampingThreshold_ReturnsCorrectValue()
+        public void LinearDampingThreshold_GetSet_ReturnsCorrectValue()
         {
             var value = world.LinearDampingThreshold;
             world.LinearDampingThreshold = value + 1;
@@ -226,7 +226,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAngularDampingThreshold_ReturnsCorrectValue()
+        public void AngularDampingThreshold_GetSet_ReturnsCorrectValue()
         {
             var value = world.AngularDampingThreshold;
             world.AngularDampingThreshold = value + 1;
@@ -235,7 +235,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetLinearDamping_ReturnsCorrectValue()
+        public void LinearDamping_GetSet_ReturnsCorrectValue()
         {
             var value = world.LinearDamping;
             world.LinearDamping = value + 1;
@@ -244,7 +244,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetAngularDamping_ReturnsCorrectValue()
+        public void AngularDamping_GetSet_ReturnsCorrectValue()
         {
             var value = world.AngularDamping;
             world.AngularDamping = value + 1;
@@ -253,7 +253,7 @@ namespace Ode.Net.UnitTests
         }
 
         [TestMethod]
-        public void GetSetMaxAngularSpeed_ReturnsCorrectValue()
+        public void MaxAngularSpeed_GetSet_ReturnsCorrectValue()
         {
             var value = world.MaxAngularSpeed;
             world.MaxAngularSpeed = value + 1;

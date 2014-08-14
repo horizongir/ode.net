@@ -1,4 +1,6 @@
-﻿using Ode.Net.Native;
+﻿using Ode.Net.Geoms;
+using Ode.Net.Joints;
+using Ode.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +17,9 @@ namespace Ode.Net
     /// </summary>
     public class Body : IDisposable
     {
-        int disposed;
         readonly dBodyID id;
+        event EventHandler moved;
+        MovedCallback movedCallback;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Body"/> class on the
@@ -251,11 +254,192 @@ namespace Ode.Net
         }
 
         /// <summary>
+        /// Gets the collection of joints attached to the rigid body.
+        /// </summary>
+        public IEnumerable<Joint> Joints
+        {
+            get
+            {
+                var numJoints = NativeMethods.dBodyGetNumJoints(id);
+                for (int i = 0; i < numJoints; i++)
+                {
+                    var joint = Joint.FromIntPtr(NativeMethods.dBodyGetJoint(id, i));
+                    if (joint == null) continue;
+                    yield return joint;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the rigid body is in
+        /// kinematic state.
+        /// </summary>
+        public bool Kinematic
+        {
+            get
+            {
+                return NativeMethods.dBodyIsKinematic(id) != 0;
+            }
+            set
+            {
+                if (value) NativeMethods.dBodySetKinematic(id);
+                else NativeMethods.dBodySetDynamic(id);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the rigid body is enabled.
+        /// </summary>
+        public bool Enabled
+        {
+            get
+            {
+                return NativeMethods.dBodyIsEnabled(id) != 0;
+            }
+            set
+            {
+                if (value) NativeMethods.dBodyEnable(id);
+                else NativeMethods.dBodyDisable(id);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the rigid body is influenced
+        /// by the world's gravity.
+        /// </summary>
+        public bool GravityMode
+        {
+            get { return NativeMethods.dBodyGetGravityMode(id) != 0; }
+            set { NativeMethods.dBodySetGravityMode(id, value ? 1 : 0); }
+        }
+
+        /// <summary>
+        /// Gets the collection of geoms associated with the rigid body.
+        /// </summary>
+        public IEnumerable<Geom> Geoms
+        {
+            get
+            {
+                var geom = NativeMethods.dBodyGetFirstGeom(id);
+                while (geom != IntPtr.Zero)
+                {
+                    yield return Geom.FromIntPtr(geom);
+                    geom = NativeMethods.dBodyGetNextGeom(geom);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the rigid body's linear velocity damping scale.
+        /// </summary>
+        public dReal LinearDamping
+        {
+            get { return NativeMethods.dBodyGetLinearDamping(id); }
+            set { NativeMethods.dBodySetLinearDamping(id, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the rigid body's angular velocity damping scale.
+        /// </summary>
+        public dReal AngularDamping
+        {
+            get { return NativeMethods.dBodyGetAngularDamping(id); }
+            set { NativeMethods.dBodySetAngularDamping(id, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the rigid body's linear velocity damping threshold.
+        /// </summary>
+        public dReal LinearDampingThreshold
+        {
+            get { return NativeMethods.dBodyGetLinearDampingThreshold(id); }
+            set { NativeMethods.dBodySetLinearDampingThreshold(id, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the rigid body's angular velocity damping threshold.
+        /// </summary>
+        public dReal AngularDampingThreshold
+        {
+            get { return NativeMethods.dBodyGetAngularDampingThreshold(id); }
+            set { NativeMethods.dBodySetAngularDampingThreshold(id, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the default maximum angular speed for the rigid body.
+        /// </summary>
+        public dReal MaxAngularSpeed
+        {
+            get { return NativeMethods.dBodyGetMaxAngularSpeed(id); }
+            set { NativeMethods.dBodySetMaxAngularSpeed(id, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether gyroscopic term computation is enabled.
+        /// </summary>
+        public bool GyroscopicMode
+        {
+            get { return NativeMethods.dBodyGetGyroscopicMode(id) != 0; }
+            set { NativeMethods.dBodySetGyroscopicMode(id, value ? 1 : 0); }
+        }
+
+        /// <summary>
+        /// Occurs whenever the rigid body has its position or rotation changed
+        /// during a world timestep.
+        /// </summary>
+        public event EventHandler Moved
+        {
+            add
+            {
+                if (Interlocked.CompareExchange(
+                        ref movedCallback,
+                        OnMoved, null) == null)
+                {
+                    NativeMethods.dBodySetMovedCallback(id, movedCallback);
+                }
+
+                moved += value;
+            }
+            remove { moved -= value; }
+        }
+
+        private void OnMoved(IntPtr ptr)
+        {
+            var handler = moved;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
         /// Sets the auto-disable parameters to those set as default for the world.
         /// </summary>
         public void SetAutoDisableDefaults()
         {
             NativeMethods.dBodySetAutoDisableDefaults(id);
+        }
+
+        /// <summary>
+        /// Sets the damping parameters to those set as default for the world.
+        /// </summary>
+        public void SetDampingDefaults()
+        {
+            NativeMethods.dBodySetDampingDefaults(id);
+        }
+
+        /// <summary>
+        /// Sets both linear and angular damping scales.
+        /// </summary>
+        /// <param name="linearScale">
+        /// The linear damping scale that is to be applied to the rigid body.
+        /// </param>
+        /// <param name="angularScale">
+        /// The angular damping scale that is to be applied to the rigid body.
+        /// </param>
+        public void SetDamping(dReal linearScale, dReal angularScale)
+        {
+            NativeMethods.dBodySetDamping(id, linearScale, angularScale);
         }
 
         /// <summary>
@@ -739,7 +923,7 @@ namespace Ode.Net
         /// </summary>
         public void Dispose()
         {
-            if (Interlocked.CompareExchange(ref disposed, 1, 0) == 0)
+            if (!id.IsInvalid)
             {
                 var handlePtr = NativeMethods.dBodyGetData(id);
                 var handle = GCHandle.FromIntPtr(handlePtr);
