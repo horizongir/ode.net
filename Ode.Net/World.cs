@@ -364,8 +364,12 @@ namespace Ode.Net
         /// <summary>
         /// Sets both linear and angular damping scales.
         /// </summary>
-        /// <param name="linearScale">The linear damping scale that is to be applied to bodies.</param>
-        /// <param name="angularScale">The angular damping scale that is to be applied to bodies.</param>
+        /// <param name="linearScale">
+        /// The linear damping scale that is to be applied to newly created bodies.
+        /// </param>
+        /// <param name="angularScale">
+        /// The angular damping scale that is to be applied to newly created bodies.
+        /// </param>
         public void SetDamping(dReal linearScale, dReal angularScale)
         {
             NativeMethods.dWorldSetDamping(id, linearScale, angularScale);

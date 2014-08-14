@@ -43,5 +43,5 @@ namespace Ode.Net.Native
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    delegate void MovedCallback(dBodyID b);
+    delegate void MovedCallback(IntPtr b);
 }

@@ -372,7 +372,7 @@ namespace Ode.Net.Native
         internal static extern int dBodyGetNumJoints(dBodyID b);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dJointID dBodyGetJoint(dBodyID b, int index);
+        internal static extern IntPtr dBodyGetJoint(dBodyID b, int index);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dBodySetDynamic(dBodyID b);
@@ -402,10 +402,10 @@ namespace Ode.Net.Native
         internal static extern void dBodySetMovedCallback(dBodyID b, MovedCallback callback);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dGeomID dBodyGetFirstGeom(dBodyID b);
+        internal static extern IntPtr dBodyGetFirstGeom(dBodyID b);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dGeomID dBodyGetNextGeom(dGeomID g);
+        internal static extern IntPtr dBodyGetNextGeom(IntPtr g);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dBodySetDampingDefaults(dBodyID b);
