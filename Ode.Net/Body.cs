@@ -15,7 +15,7 @@ namespace Ode.Net
     /// <summary>
     /// Represents a rigid body.
     /// </summary>
-    public class Body : IDisposable
+    public sealed class Body : IDisposable
     {
         readonly dBodyID id;
         event EventHandler moved;

@@ -11,7 +11,7 @@ namespace Ode.Net
     /// <summary>
     /// Represents a container for rigid bodies and joints.
     /// </summary>
-    public class World : IDisposable
+    public sealed class World : IDisposable
     {
         /// <summary>
         /// Represents an unlimited number of island step threads when setting
