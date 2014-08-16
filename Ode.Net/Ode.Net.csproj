@@ -22,6 +22,7 @@
     <DefineConstants>TRACE;DEBUG;SINGLE_PRECISION</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Ode.Net.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,6 +55,7 @@
     <Compile Include="Joints\Hinge.cs" />
     <Compile Include="Joints\Hinge2.cs" />
     <Compile Include="Joints\Joint.cs" />
+    <Compile Include="Joints\JointFeedback.cs" />
     <Compile Include="Joints\JointGroup.cs" />
     <Compile Include="Joints\JointType.cs" />
     <Compile Include="Joints\LinearMotor.cs" />
@@ -66,7 +69,7 @@
     <Compile Include="Mass.cs" />
     <Compile Include="Matrix3.cs" />
     <Compile Include="Native\common.cs" />
-    <Compile Include="Native\dJointFeedback.cs" />
+    <Compile Include="Native\dJointFeedbackHandle.cs" />
     <Compile Include="Native\dJointGroupID.cs" />
     <Compile Include="Native\dJointID.cs" />
     <Compile Include="Native\dGeomID.cs" />

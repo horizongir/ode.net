@@ -229,6 +229,9 @@ namespace Ode.Net.Native
         internal static extern void dBodySetData(dBodyID b, IntPtr data);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dBodyGetData(IntPtr b);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr dBodyGetData(dBodyID b);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
@@ -540,16 +543,19 @@ namespace Ode.Net.Native
         internal static extern IntPtr dJointGetData(IntPtr j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dJointGetData(dJointID j);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern JointType dJointGetType(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dBodyID dJointGetBody(dJointID j, int index);
+        internal static extern IntPtr dJointGetBody(dJointID j, int index);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetFeedback(dJointID j, dJointFeedback f);
+        internal static extern void dJointSetFeedback(dJointID j, dJointFeedbackHandle f);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dJointFeedback dJointGetFeedback(dJointID j);
+        internal static extern IntPtr dJointGetFeedback(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetBallAnchor(dJointID j, dReal x, dReal y, dReal z);
@@ -1076,16 +1082,16 @@ namespace Ode.Net.Native
         internal static extern dReal dJointGetDHingeParam(dJointID j, int parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dJointID dConnectingJoint(dBodyID body1, dBodyID body2);
+        internal static extern IntPtr dConnectingJoint(dBodyID body1, dBodyID body2);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dConnectingJointList(dBodyID body1, dBodyID body2, dJointID[] joint_list);
+        internal static extern int dConnectingJointList(dBodyID body1, dBodyID body2, [Out]IntPtr[] joint_list);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dAreConnected(dBodyID body1, dBodyID body2);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dAreConnectedExcluding(dBodyID body1, dBodyID body2, int joint_type);
+        internal static extern int dAreConnectedExcluding(dBodyID body1, dBodyID body2, JointType joint_type);
 
         #endregion
     }

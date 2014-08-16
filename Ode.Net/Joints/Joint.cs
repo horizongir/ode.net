@@ -14,6 +14,7 @@ namespace Ode.Net.Joints
     public abstract class Joint : IDisposable
     {
         readonly dJointID id;
+        JointFeedback feedback;
 
         internal Joint(dJointID joint)
         {
@@ -31,11 +32,57 @@ namespace Ode.Net.Joints
             return (Joint)handle.Target;
         }
 
+        public int NumBodies
+        {
+            get { return NativeMethods.dJointGetNumBodies(id); }
+        }
+
+        public bool Enabled
+        {
+            get { return NativeMethods.dJointIsEnabled(id) != 0; }
+            set
+            {
+                if (value) NativeMethods.dJointEnable(id);
+                else NativeMethods.dJointDisable(id);
+            }
+        }
+
+        public object Data { get; set; }
+
+        public JointType Type
+        {
+            get { return NativeMethods.dJointGetType(id); }
+        }
+
+        public JointFeedback Feedback
+        {
+            get { return feedback; }
+            set
+            {
+                var handle = value != null ? value.Handle : dJointFeedbackHandle.Null;
+                NativeMethods.dJointSetFeedback(id, handle);
+                feedback = value;
+            }
+        }
+
+        public void Attach(Body body1, Body body2)
+        {
+            var b1 = body1 != null ? body1.Id : dBodyID.Null;
+            var b2 = body2 != null ? body2.Id : dBodyID.Null;
+            NativeMethods.dJointAttach(id, b1, b2);
+        }
+
+        public Body GetBody(int index)
+        {
+            var body = NativeMethods.dJointGetBody(id, index);
+            return Body.FromIntPtr(body);
+        }
+
         public void Dispose()
         {
             if (!id.IsInvalid)
             {
-                var handlePtr = NativeMethods.dJointGetData(id.DangerousGetHandle());
+                var handlePtr = NativeMethods.dJointGetData(id);
                 var handle = GCHandle.FromIntPtr(handlePtr);
                 handle.Free();
                 id.Close();

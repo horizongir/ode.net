@@ -42,6 +42,15 @@ namespace Ode.Net.Native
         IntPtr preallocate_resources_for_calls;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct dJointFeedback
+    {
+        internal Vector3 f1;
+        internal Vector3 t1;
+        internal Vector3 f2;
+        internal Vector3 t2;
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate void MovedCallback(IntPtr b);
 }

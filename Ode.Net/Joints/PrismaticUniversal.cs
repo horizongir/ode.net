@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public PrismaticUniversal(World world, JointGroup group)
-            : base(NativeMethods.dJointCreatePU(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreatePU(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

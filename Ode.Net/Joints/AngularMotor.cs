@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public AngularMotor(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateAMotor(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateAMotor(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

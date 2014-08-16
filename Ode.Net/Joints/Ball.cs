@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public Ball(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateBall(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateBall(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

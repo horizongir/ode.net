@@ -7,28 +7,38 @@ using System.Threading.Tasks;
 
 namespace Ode.Net.Joints
 {
-    public sealed class JointGroup : IDisposable
+    public sealed class JointGroup : IEnumerable<Joint>
     {
-        readonly dJointGroupID id;
+        readonly List<Joint> joints = new List<Joint>();
 
-        public JointGroup()
+        internal void Add(Joint joint)
         {
-            id = NativeMethods.dJointGroupCreate(0);
-        }
+            if (joint == null)
+            {
+                throw new ArgumentNullException("joint");
+            }
 
-        internal dJointGroupID Id
-        {
-            get { return id; }
+            joints.Add(joint);
         }
 
         public void Clear()
         {
-            NativeMethods.dJointGroupEmpty(id);
+            foreach (var joint in joints)
+            {
+                joint.Dispose();
+            }
+
+            joints.Clear();
         }
 
-        public void Dispose()
+        public IEnumerator<Joint> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return joints.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return joints.GetEnumerator();
         }
     }
 }

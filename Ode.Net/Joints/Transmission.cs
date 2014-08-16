@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public Transmission(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateTransmission(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateTransmission(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

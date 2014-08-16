@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public Piston(World world, JointGroup group)
-            : base(NativeMethods.dJointCreatePiston(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreatePiston(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

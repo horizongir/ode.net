@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public PrismaticRotoide(World world, JointGroup group)
-            : base(NativeMethods.dJointCreatePR(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreatePR(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }
