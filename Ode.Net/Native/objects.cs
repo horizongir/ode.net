@@ -564,7 +564,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetBallAnchor2(dJointID j, dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetBallParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetBallParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetHingeAnchor(dJointID j, dReal x, dReal y, dReal z);
@@ -579,7 +579,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetHingeAxisOffset(dJointID j, dReal x, dReal y, dReal z, dReal angle);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetHingeParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetHingeParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddHingeTorque(dJointID joint, dReal torque);
@@ -591,7 +591,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetSliderAxisDelta(dJointID j, dReal x, dReal y, dReal z, dReal ax, dReal ay, dReal az);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetSliderParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetSliderParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddSliderForce(dJointID joint, dReal force);
@@ -606,7 +606,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetHinge2Axis2(dJointID j, dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetHinge2Param(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetHinge2Param(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddHinge2Torques(dJointID joint, dReal torque1, dReal torque2);
@@ -629,7 +629,7 @@ namespace Ode.Net.Native
                                                     dReal offset1, dReal offset2);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetUniversalParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetUniversalParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddUniversalTorques(dJointID joint, dReal torque1, dReal torque2);
@@ -644,7 +644,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetPRAxis2(dJointID j, dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetPRParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetPRParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddPRTorque(dJointID j, dReal torque);
@@ -674,7 +674,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetPUAxisP(dJointID id, dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetPUParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetPUParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddPUTorque(dJointID j, dReal torque);
@@ -694,7 +694,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetPistonAxisDelta(dJointID j, dReal x, dReal y, dReal z, dReal ax, dReal ay, dReal az);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetPistonParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetPistonParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddPistonForce(dJointID joint, dReal force);
@@ -703,7 +703,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetFixed(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetFixedParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetFixedParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetAMotorNumAxes(dJointID j, int num);
@@ -716,7 +716,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetAMotorAngle(dJointID j, int anum, dReal angle);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetAMotorParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetAMotorParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetAMotorMode(dJointID j, int mode);
@@ -731,16 +731,16 @@ namespace Ode.Net.Native
         internal static extern void dJointSetLMotorAxis(dJointID j, int anum, int rel, dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetLMotorParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetLMotorParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetPlane2DXParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetPlane2DXParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetPlane2DYParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetPlane2DYParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetPlane2DAngleParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetPlane2DAngleParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointGetBallAnchor(dJointID j, out Vector3 result);
@@ -749,7 +749,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetBallAnchor2(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetBallParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetBallParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointGetHingeAnchor(dJointID j, out Vector3 result);
@@ -761,7 +761,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetHingeAxis(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetHingeParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetHingeParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dReal dJointGetHingeAngle(dJointID j);
@@ -779,7 +779,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetSliderAxis(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetSliderParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetSliderParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointGetHinge2Anchor(dJointID j, out Vector3 result);
@@ -794,7 +794,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetHinge2Axis2(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetHinge2Param(dJointID j, int parameter);
+        internal static extern dReal dJointGetHinge2Param(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dReal dJointGetHinge2Angle1(dJointID j);
@@ -818,7 +818,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetUniversalAxis2(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetUniversalParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetUniversalParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointGetUniversalAngles(dJointID j, out dReal angle1, out dReal angle2);
@@ -857,7 +857,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetPRAxis2(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetPRParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetPRParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointGetPUAnchor(dJointID j, out Vector3 result);
@@ -896,7 +896,7 @@ namespace Ode.Net.Native
         internal static extern dReal dJointGetPUAngle2Rate(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetPUParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetPUParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dReal dJointGetPistonPosition(dJointID j);
@@ -920,7 +920,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetPistonAxis(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetPistonParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetPistonParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dJointGetAMotorNumAxes(dJointID j);
@@ -938,7 +938,7 @@ namespace Ode.Net.Native
         internal static extern dReal dJointGetAMotorAngleRate(dJointID j, int anum);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetAMotorParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetAMotorParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dJointGetAMotorMode(dJointID j);
@@ -950,10 +950,10 @@ namespace Ode.Net.Native
         internal static extern void dJointGetLMotorAxis(dJointID j, int anum, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetLMotorParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetLMotorParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetFixedParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetFixedParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointGetTransmissionContactPoint1(dJointID j, out Vector3 result);
@@ -986,10 +986,10 @@ namespace Ode.Net.Native
         internal static extern void dJointGetTransmissionAnchor2(dJointID j, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetTransmissionParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetTransmissionParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetTransmissionParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetTransmissionParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetTransmissionMode(dJointID j, int mode);
@@ -1049,10 +1049,10 @@ namespace Ode.Net.Native
         internal static extern dReal dJointGetDBallDistance(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetDBallParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetDBallParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetDBallParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetDBallParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetDHingeAxis(dJointID j, dReal x, dReal y, dReal z);
@@ -1076,10 +1076,10 @@ namespace Ode.Net.Native
         internal static extern dReal dJointGetDHingeDistance(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetDHingeParam(dJointID j, int parameter, dReal value);
+        internal static extern void dJointSetDHingeParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dReal dJointGetDHingeParam(dJointID j, int parameter);
+        internal static extern dReal dJointGetDHingeParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr dConnectingJoint(dBodyID body1, dBodyID body2);
