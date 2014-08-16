@@ -38,7 +38,7 @@ namespace Ode.Net.Joints
         }
 
         /// <summary>
-        /// Gets or sets the first joint anchor point.
+        /// Gets or sets the joint anchor point, in world coordinates.
         /// </summary>
         public Vector3 Anchor
         {
@@ -55,7 +55,8 @@ namespace Ode.Net.Joints
         }
 
         /// <summary>
-        /// Gets or sets the second joint anchor point.
+        /// Gets or sets the anchor point on the second body, in world coordinates. If the
+        /// joint is perfectly satisfied, this will be the same value as <see cref="Anchor"/>.
         /// </summary>
         public Vector3 Anchor2
         {
