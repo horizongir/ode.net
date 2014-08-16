@@ -946,6 +946,14 @@ namespace Ode.Net
             return Joint.FromIntPtr(joint);
         }
 
+        /// <summary>
+        /// Gets the collection of joints connecting this body to another
+        /// specified rigid body.
+        /// </summary>
+        /// <param name="body">The body to get connecting joints for.</param>
+        /// <returns>
+        /// The collection of joints connecting the two bodies.
+        /// </returns>
         public IEnumerable<Joint> GetConnectingJoints(Body body)
         {
             var numJoints = NativeMethods.dBodyGetNumJoints(id);
@@ -960,11 +968,31 @@ namespace Ode.Net
             }
         }
 
+        /// <summary>
+        /// Tests whether two bodies are connected together by a joint.
+        /// </summary>
+        /// <param name="body1">The first body to test.</param>
+        /// <param name="body2">The second body to test.</param>
+        /// <returns>
+        /// <b>true</b> if the two bodies are connected together by a joint;
+        /// otherwise, <b>false</b>.
+        /// </returns>
         public static bool AreConnected(Body body1, Body body2)
         {
             return NativeMethods.dAreConnected(body1.id, body2.id) != 0;
         }
 
+        /// <summary>
+        /// Tests whether two bodies are connected together by a joint that does
+        /// not have the specified type.
+        /// </summary>
+        /// <param name="body1">The first body to test.</param>
+        /// <param name="body2">The second body to test.</param>
+        /// <param name="jointType">The type of joints to exclude from the test.</param>
+        /// <returns>
+        /// <b>true</b> if the two bodies are connected together by a joint that
+        /// does not have the specified type; otherwise, <b>false</b>.
+        /// </returns>
         public static bool AreConnectedExcluding(Body body1, Body body2, JointType jointType)
         {
             return NativeMethods.dAreConnectedExcluding(body1.id, body2.id, jointType) != 0;
