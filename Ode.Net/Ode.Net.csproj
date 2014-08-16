@@ -57,6 +57,7 @@
     <Compile Include="Joints\Joint.cs" />
     <Compile Include="Joints\JointFeedback.cs" />
     <Compile Include="Joints\JointGroup.cs" />
+    <Compile Include="Joints\JointLimitMotor.cs" />
     <Compile Include="Joints\JointType.cs" />
     <Compile Include="Joints\LinearMotor.cs" />
     <Compile Include="Joints\Piston.cs" />
