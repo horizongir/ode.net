@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public LinearMotor(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateLMotor(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateLMotor(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ode.Net.Joints;
 
 namespace Ode.Net.UnitTests
 {
@@ -10,14 +11,14 @@ namespace Ode.Net.UnitTests
         Body body;
 
         [TestInitialize]
-        public void InitializeBody()
+        public void Initialize()
         {
             world = new World();
             body = new Body(world);
         }
 
         [TestCleanup]
-        public void CleanupBody()
+        public void Cleanup()
         {
             body.Dispose();
             world.Dispose();
@@ -132,6 +133,28 @@ namespace Ode.Net.UnitTests
             Assert.AreEqual(angular + 1, body.AngularDamping);
             body.LinearDamping = linear;
             body.AngularDamping = angular;
+        }
+
+        [TestMethod]
+        public void GetConnectingJoint_NonConnectedBodies_ReturnsNull()
+        {
+            using (var body1 = new Body(world))
+            using (var body2 = new Body(world))
+            {
+                Assert.IsNull(body1.GetConnectingJoint(body2));
+            }
+        }
+
+        [TestMethod]
+        public void GetConnectingJoint_ConnectedBodies_ReturnsJoint()
+        {
+            using (var body1 = new Body(world))
+            using (var body2 = new Body(world))
+            using (var ballJoint = new Ball(world))
+            {
+                ballJoint.Attach(body1, body2);
+                Assert.AreSame(ballJoint, body1.GetConnectingJoint(body2));
+            }
         }
     }
 }

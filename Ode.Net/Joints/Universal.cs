@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public Universal(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateUniversal(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateUniversal(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

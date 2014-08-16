@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public Fixed(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateFixed(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateFixed(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

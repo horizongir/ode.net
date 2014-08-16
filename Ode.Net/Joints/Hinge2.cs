@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public Hinge2(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateHinge2(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateHinge2(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

@@ -11,18 +11,17 @@ namespace Ode.Net.UnitTests
         World world;
 
         [TestInitialize]
-        public void InitializeWorld()
+        public void Initialize()
         {
-            Ode.Init();
-            Ode.AllocateDataForThread(AllocateDataFlags.All);
+            OdeTests.Initialize();
             world = new World();
         }
 
         [TestCleanup]
-        public void CleanupWorld()
+        public void Cleanup()
         {
             world.Dispose();
-            Ode.Close();
+            OdeTests.Cleanup();
         }
 
         [TestMethod]

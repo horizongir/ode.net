@@ -15,8 +15,12 @@ namespace Ode.Net.Joints
         }
 
         public Slider(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateSlider(world.Id, group != null ? group.Id : dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateSlider(world.Id, dJointGroupID.Null))
         {
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
     }
 }

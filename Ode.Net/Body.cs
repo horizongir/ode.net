@@ -33,6 +33,20 @@ namespace Ode.Net
             NativeMethods.dBodySetData(id, GCHandle.ToIntPtr(handle));
         }
 
+        internal dBodyID Id
+        {
+            get { return id; }
+        }
+
+        internal static Body FromIntPtr(IntPtr value)
+        {
+            if (value == IntPtr.Zero) return null;
+            var handlePtr = NativeMethods.dBodyGetData(value);
+            if (handlePtr == IntPtr.Zero) return null;
+            var handle = GCHandle.FromIntPtr(handlePtr);
+            return (Body)handle.Target;
+        }
+
         /// <summary>
         /// Gets or sets the auto-disable linear velocity threshold for the body.
         /// </summary>
@@ -916,6 +930,44 @@ namespace Ode.Net
         public void GetFiniteRotationAxis(out Vector3 axis)
         {
             NativeMethods.dBodyGetFiniteRotationAxis(id, out axis);
+        }
+
+        /// <summary>
+        /// Gets the first joint connecting this body to another specified rigid body.
+        /// </summary>
+        /// <param name="body">The body to get a connecting joint for.</param>
+        /// <returns>
+        /// The first connecting joint between the two bodies, if one exists;
+        /// otherwise, <b>null</b>.
+        /// </returns>
+        public Joint GetConnectingJoint(Body body)
+        {
+            var joint = NativeMethods.dConnectingJoint(id, body.id);
+            return Joint.FromIntPtr(joint);
+        }
+
+        public IEnumerable<Joint> GetConnectingJoints(Body body)
+        {
+            var numJoints = NativeMethods.dBodyGetNumJoints(id);
+            var connectingJoints = new IntPtr[numJoints];
+
+            var numConnectingJoints = NativeMethods.dConnectingJointList(id, body.id, connectingJoints);
+            for (int i = 0; i < numConnectingJoints; i++)
+            {
+                var connectingJoint = Joint.FromIntPtr(connectingJoints[i]);
+                if (connectingJoint == null) continue;
+                yield return connectingJoint;
+            }
+        }
+
+        public static bool AreConnected(Body body1, Body body2)
+        {
+            return NativeMethods.dAreConnected(body1.id, body2.id) != 0;
+        }
+
+        public static bool AreConnectedExcluding(Body body1, Body body2, JointType jointType)
+        {
+            return NativeMethods.dAreConnectedExcluding(body1.id, body2.id, jointType) != 0;
         }
 
         /// <summary>
