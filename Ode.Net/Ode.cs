@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,30 @@ namespace Ode.Net
     /// </summary>
     public static class Ode
     {
+        /// <summary>
+        /// Gets the specific ODE build configuration as a sequence of tokens.
+        /// </summary>
+        /// <returns>The ODE configuration string.</returns>
+        public static string GetConfiguration()
+        {
+            var configurationPtr = NativeMethods.dGetConfiguration();
+            return Marshal.PtrToStringAnsi(configurationPtr);
+        }
+
+        /// <summary>
+        /// Checks for a specific token in the ODE configuration string.
+        /// This function is case sensitive.
+        /// </summary>
+        /// <param name="token">The configuration token to check for.</param>
+        /// <returns>
+        /// <b>true</b> if the configuration token is present in the ODE
+        /// configuration string; otherwise, <b>false</b>.
+        /// </returns>
+        public static bool CheckConfiguration(string token)
+        {
+            return NativeMethods.dCheckConfiguration(token) != 0;
+        }
+
         /// <summary>
         /// Initializes the ODE library.
         /// </summary>
