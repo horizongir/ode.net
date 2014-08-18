@@ -709,7 +709,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetAMotorNumAxes(dJointID j, int num);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetAMotorAxis(dJointID j, int anum, int rel,
+        internal static extern void dJointSetAMotorAxis(dJointID j, int anum, RelativeOrientation rel,
                       dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
@@ -719,7 +719,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetAMotorParam(dJointID j, dJointParam parameter, dReal value);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetAMotorMode(dJointID j, int mode);
+        internal static extern void dJointSetAMotorMode(dJointID j, AngularMotorMode mode);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointAddAMotorTorques(dJointID j, dReal torque1, dReal torque2, dReal torque3);
@@ -728,7 +728,7 @@ namespace Ode.Net.Native
         internal static extern void dJointSetLMotorNumAxes(dJointID j, int num);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetLMotorAxis(dJointID j, int anum, int rel, dReal x, dReal y, dReal z);
+        internal static extern void dJointSetLMotorAxis(dJointID j, int anum, RelativeOrientation rel, dReal x, dReal y, dReal z);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetLMotorParam(dJointID j, dJointParam parameter, dReal value);
@@ -929,7 +929,7 @@ namespace Ode.Net.Native
         internal static extern void dJointGetAMotorAxis(dJointID j, int anum, out Vector3 result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dJointGetAMotorAxisRel(dJointID j, int anum);
+        internal static extern RelativeOrientation dJointGetAMotorAxisRel(dJointID j, int anum);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dReal dJointGetAMotorAngle(dJointID j, int anum);
@@ -941,7 +941,7 @@ namespace Ode.Net.Native
         internal static extern dReal dJointGetAMotorParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dJointGetAMotorMode(dJointID j);
+        internal static extern AngularMotorMode dJointGetAMotorMode(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dJointGetLMotorNumAxes(dJointID j);
@@ -992,10 +992,10 @@ namespace Ode.Net.Native
         internal static extern dReal dJointGetTransmissionParam(dJointID j, dJointParam parameter);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dJointSetTransmissionMode(dJointID j, int mode);
+        internal static extern void dJointSetTransmissionMode(dJointID j, TransmissionMode mode);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dJointGetTransmissionMode(dJointID j);
+        internal static extern TransmissionMode dJointGetTransmissionMode(dJointID j);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dJointSetTransmissionRatio(dJointID j, dReal ratio);
