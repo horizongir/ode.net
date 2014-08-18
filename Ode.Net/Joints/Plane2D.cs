@@ -15,12 +15,8 @@ namespace Ode.Net.Joints
         }
 
         public Plane2D(World world, JointGroup group)
-            : base(NativeMethods.dJointCreatePlane2D(world.Id, dJointGroupID.Null))
+            : base(NativeMethods.dJointCreatePlane2D(world.Id, dJointGroupID.Null), group)
         {
-            if (group != null)
-            {
-                group.Add(this);
-            }
         }
     }
 }

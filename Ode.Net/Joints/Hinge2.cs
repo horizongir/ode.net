@@ -32,15 +32,10 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Hinge2(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateHinge2(world.Id, dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateHinge2(world.Id, dJointGroupID.Null), group)
         {
-            if (group != null)
-            {
-                group.Add(this);
-            }
-
-            limitMotor1 = new Hinge2LimitMotor(this);
-            limitMotor2 = new Hinge2LimitMotor(this);
+            limitMotor1 = new Hinge2LimitMotor(this, 0);
+            limitMotor2 = new Hinge2LimitMotor(this, 1);
         }
 
         /// <summary>
@@ -75,7 +70,7 @@ namespace Ode.Net.Joints
         }
 
         /// <summary>
-        /// Gets the axis for the first hinge.
+        /// Gets or sets the axis for the first hinge, in world coordinates.
         /// </summary>
         public Vector3 Axis1
         {
@@ -92,7 +87,7 @@ namespace Ode.Net.Joints
         }
 
         /// <summary>
-        /// Gets the axis for the second hinge.
+        /// Gets or sets the axis for the second hinge, in world coordinates.
         /// </summary>
         public Vector3 Axis2
         {
@@ -150,6 +145,24 @@ namespace Ode.Net.Joints
         }
 
         /// <summary>
+        /// Gets or sets the suspension error reduction parameter.
+        /// </summary>
+        public dReal SuspensionErp
+        {
+            get { return NativeMethods.dJointGetHinge2Param(id, dJointParam.dParamSuspensionERP); }
+            set { NativeMethods.dJointSetHinge2Param(id, dJointParam.dParamSuspensionERP, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the suspension constraint force mixing value.
+        /// </summary>
+        public dReal SuspensionCfm
+        {
+            get { return NativeMethods.dJointGetHinge2Param(id, dJointParam.dParamSuspensionCFM); }
+            set { NativeMethods.dJointSetHinge2Param(id, dJointParam.dParamSuspensionCFM, value); }
+        }
+
+        /// <summary>
         /// Applies torque about both hinge axes.
         /// </summary>
         /// <param name="torque1">
@@ -165,8 +178,8 @@ namespace Ode.Net.Joints
 
         class Hinge2LimitMotor : JointLimitMotor
         {
-            internal Hinge2LimitMotor(Hinge2 joint)
-                : base(joint)
+            internal Hinge2LimitMotor(Hinge2 joint, int axis)
+                : base(joint, axis)
             {
             }
 
