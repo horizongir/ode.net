@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="BodyTests.cs" />
     <Compile Include="JointTests.cs" />
+    <Compile Include="LinearMotorTests.cs" />
     <Compile Include="MassTests.cs" />
     <Compile Include="OdeTests.cs" />
     <Compile Include="WorldTests.cs" />

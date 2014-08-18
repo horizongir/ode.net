@@ -66,6 +66,7 @@
     <Compile Include="Joints\PrismaticUniversal.cs" />
     <Compile Include="Joints\Slider.cs" />
     <Compile Include="Joints\Transmission.cs" />
+    <Compile Include="Joints\RelativeOrientation.cs" />
     <Compile Include="Joints\Universal.cs" />
     <Compile Include="Mass.cs" />
     <Compile Include="Matrix3.cs" />
