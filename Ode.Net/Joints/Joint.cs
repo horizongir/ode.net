@@ -16,11 +16,16 @@ namespace Ode.Net.Joints
         internal readonly dJointID id;
         JointFeedback feedback;
 
-        internal Joint(dJointID joint)
+        internal Joint(dJointID joint, JointGroup group)
         {
             id = joint;
             var handle = GCHandle.Alloc(this);
             NativeMethods.dJointSetData(id, GCHandle.ToIntPtr(handle));
+
+            if (group != null)
+            {
+                group.Add(this);
+            }
         }
 
         internal static Joint FromIntPtr(IntPtr value)

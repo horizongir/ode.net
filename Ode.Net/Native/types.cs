@@ -56,7 +56,6 @@ namespace Ode.Net.Native
 
     enum dJointParam
     {
-        /* parameters for limits and motors */
         dParamLoStop = 0x000,
         dParamHiStop,
         dParamVel,
@@ -68,12 +67,10 @@ namespace Ode.Net.Native
         dParamCFM,
         dParamStopERP,
         dParamStopCFM,
-        /* parameters for suspension */
         dParamSuspensionERP,
         dParamSuspensionCFM,
         dParamERP,
 
-        /* parameters for limits and motors */
         dParamLoStop2 = 0x100,
         dParamHiStop2,
         dParamVel2,
@@ -85,12 +82,10 @@ namespace Ode.Net.Native
         dParamCFM2,
         dParamStopERP2,
         dParamStopCFM2,
-        /* parameters for suspension */
         dParamSuspensionERP2,
         dParamSuspensionCFM2,
         dParamERP2,
 
-        /* parameters for limits and motors */
         dParamLoStop3 = 0x200,
         dParamHiStop3,
         dParamVel3,
@@ -102,7 +97,6 @@ namespace Ode.Net.Native
         dParamCFM3,
         dParamStopERP3,
         dParamStopCFM3,
-        /* parameters for suspension */
         dParamSuspensionERP3,
         dParamSuspensionCFM3,
         dParamERP3

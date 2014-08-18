@@ -31,14 +31,9 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Slider(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateSlider(world.Id, dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateSlider(world.Id, dJointGroupID.Null), group)
         {
-            if (group != null)
-            {
-                group.Add(this);
-            }
-
-            limitMotor = new SliderLimitMotor(this);
+            limitMotor = new SliderLimitMotor(this, 0);
         }
 
         /// <summary>
@@ -105,8 +100,8 @@ namespace Ode.Net.Joints
 
         class SliderLimitMotor : JointLimitMotor
         {
-            internal SliderLimitMotor(Slider joint)
-                : base(joint)
+            internal SliderLimitMotor(Slider joint, int axis)
+                : base(joint, axis)
             {
             }
 

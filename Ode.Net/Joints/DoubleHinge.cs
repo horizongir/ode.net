@@ -15,12 +15,8 @@ namespace Ode.Net.Joints
         }
 
         public DoubleHinge(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateDHinge(world.Id, dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateDHinge(world.Id, dJointGroupID.Null), group)
         {
-            if (group != null)
-            {
-                group.Add(this);
-            }
         }
     }
 }

@@ -31,14 +31,9 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Hinge(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateHinge(world.Id, dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateHinge(world.Id, dJointGroupID.Null), group)
         {
-            if (group != null)
-            {
-                group.Add(this);
-            }
-
-            limitMotor = new HingeLimitMotor(this);
+            limitMotor = new HingeLimitMotor(this, 0);
         }
 
         /// <summary>
@@ -153,8 +148,8 @@ namespace Ode.Net.Joints
 
         class HingeLimitMotor : JointLimitMotor
         {
-            internal HingeLimitMotor(Hinge joint)
-                : base(joint)
+            internal HingeLimitMotor(Hinge joint, int axis)
+                : base(joint, axis)
             {
             }
 

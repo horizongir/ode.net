@@ -29,12 +29,8 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Ball(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateBall(world.Id, dJointGroupID.Null))
+            : base(NativeMethods.dJointCreateBall(world.Id, dJointGroupID.Null), group)
         {
-            if (group != null)
-            {
-                group.Add(this);
-            }
         }
 
         /// <summary>
