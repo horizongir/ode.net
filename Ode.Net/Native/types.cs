@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using dReal = System.Single;
 
 namespace Ode.Net.Native
 {
@@ -43,7 +44,7 @@ namespace Ode.Net.Native
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    delegate void MovedCallback(IntPtr b);
+    delegate void dMovedCallback(IntPtr b);
 
     [StructLayout(LayoutKind.Sequential)]
     struct dJointFeedback
@@ -69,36 +70,12 @@ namespace Ode.Net.Native
         dParamStopCFM,
         dParamSuspensionERP,
         dParamSuspensionCFM,
-        dParamERP,
-
-        dParamLoStop2 = 0x100,
-        dParamHiStop2,
-        dParamVel2,
-        dParamLoVel2,
-        dParamHiVel2,
-        dParamFMax2,
-        dParamFudgeFactor2,
-        dParamBounce2,
-        dParamCFM2,
-        dParamStopERP2,
-        dParamStopCFM2,
-        dParamSuspensionERP2,
-        dParamSuspensionCFM2,
-        dParamERP2,
-
-        dParamLoStop3 = 0x200,
-        dParamHiStop3,
-        dParamVel3,
-        dParamLoVel3,
-        dParamHiVel3,
-        dParamFMax3,
-        dParamFudgeFactor3,
-        dParamBounce3,
-        dParamCFM3,
-        dParamStopERP3,
-        dParamStopCFM3,
-        dParamSuspensionERP3,
-        dParamSuspensionCFM3,
-        dParamERP3
+        dParamERP
     }
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate void dNearCallback(IntPtr data, dGeomID o1, dGeomID o2);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate dReal dHeightfieldGetHeight(IntPtr p_user_data, int x, int z);
 }

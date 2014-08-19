@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 
 namespace Ode.Net.Native
 {
-    class dGeomID : SafeHandleZeroOrMinusOneIsInvalid
+    class dHeightfieldDataID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        internal static readonly dGeomID Null = new NulldGeomID();
+        internal static readonly dHeightfieldDataID Null = new NulldHeightfieldDataID();
 
-        internal dGeomID()
+        internal dHeightfieldDataID()
             : base(true)
         {
         }
 
-        private dGeomID(bool ownsHandle)
+        private dHeightfieldDataID(bool ownsHandle)
             : base(ownsHandle)
         {
         }
 
         protected override bool ReleaseHandle()
         {
-            NativeMethods.dGeomDestroy(handle);
+            NativeMethods.dGeomHeightfieldDataDestroy(handle);
             return true;
         }
 
-        class NulldGeomID : dGeomID
+        class NulldHeightfieldDataID : dHeightfieldDataID
         {
-            public NulldGeomID()
+            public NulldHeightfieldDataID()
                 : base(false)
             {
             }
