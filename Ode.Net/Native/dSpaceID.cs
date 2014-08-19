@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 
 namespace Ode.Net.Native
 {
-    class dGeomID : SafeHandleZeroOrMinusOneIsInvalid
+    class dSpaceID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        internal static readonly dGeomID Null = new NulldGeomID();
+        internal static readonly dSpaceID Null = new NulldSpaceID();
 
-        internal dGeomID()
+        internal dSpaceID()
             : base(true)
         {
         }
 
-        private dGeomID(bool ownsHandle)
+        private dSpaceID(bool ownsHandle)
             : base(ownsHandle)
         {
         }
 
         protected override bool ReleaseHandle()
         {
-            NativeMethods.dGeomDestroy(handle);
+            NativeMethods.dWorldDestroy(handle);
             return true;
         }
 
-        class NulldGeomID : dGeomID
+        class NulldSpaceID : dSpaceID
         {
-            public NulldGeomID()
+            public NulldSpaceID()
                 : base(false)
             {
             }

@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Body.cs" />
     <Compile Include="Geoms\Contact.cs" />
+    <Compile Include="Geoms\ContactGeom.cs" />
     <Compile Include="Geoms\Geom.cs" />
+    <Compile Include="Geoms\GeomClass.cs" />
     <Compile Include="Joints\AngularMotor.cs" />
     <Compile Include="Joints\Ball.cs" />
     <Compile Include="Joints\DoubleBall.cs" />
@@ -70,7 +72,10 @@
     <Compile Include="Joints\Universal.cs" />
     <Compile Include="Mass.cs" />
     <Compile Include="Matrix3.cs" />
+    <Compile Include="Native\collision.cs" />
     <Compile Include="Native\common.cs" />
+    <Compile Include="Native\dHeightfieldDataID.cs" />
+    <Compile Include="Native\dSpaceID.cs" />
     <Compile Include="Native\dJointFeedbackHandle.cs" />
     <Compile Include="Native\dJointGroupID.cs" />
     <Compile Include="Native\dJointID.cs" />
@@ -87,6 +92,7 @@
     <Compile Include="Quaternion.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="Vector3.cs" />
+    <Compile Include="Vector4.cs" />
     <Compile Include="WorldStepMemoryManager.cs" />
     <Compile Include="WorldStepMemoryReservationPolicy.cs" />
     <Compile Include="World.cs" />

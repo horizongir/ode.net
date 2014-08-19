@@ -19,7 +19,7 @@ namespace Ode.Net
     {
         readonly dBodyID id;
         event EventHandler moved;
-        MovedCallback movedCallback;
+        dMovedCallback movedCallback;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Body"/> class on the

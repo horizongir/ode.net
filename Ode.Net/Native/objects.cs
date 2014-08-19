@@ -404,7 +404,7 @@ namespace Ode.Net.Native
         internal static extern int dBodyGetGravityMode(dBodyID b);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dBodySetMovedCallback(dBodyID b, MovedCallback callback);
+        internal static extern void dBodySetMovedCallback(dBodyID b, dMovedCallback callback);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr dBodyGetFirstGeom(dBodyID b);
