@@ -45,10 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Body.cs" />
+    <Compile Include="Geoms\BoundingBox.cs" />
     <Compile Include="Geoms\Contact.cs" />
     <Compile Include="Geoms\ContactGeom.cs" />
     <Compile Include="Geoms\Geom.cs" />
     <Compile Include="Geoms\GeomClass.cs" />
+    <Compile Include="Geoms\Sphere.cs" />
     <Compile Include="Joints\AngularMotor.cs" />
     <Compile Include="Joints\Ball.cs" />
     <Compile Include="Joints\DoubleBall.cs" />
