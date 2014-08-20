@@ -31,7 +31,7 @@ namespace Ode.Net.Native
         internal static extern void dGeomSetBody(dGeomID geom, dBodyID body);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dBodyID dGeomGetBody(dGeomID geom);
+        internal static extern IntPtr dGeomGetBody(dGeomID geom);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomSetPosition(dGeomID geom, dReal x, dReal y, dReal z);
@@ -58,7 +58,7 @@ namespace Ode.Net.Native
         internal static extern void dGeomGetQuaternion(dGeomID geom, out Quaternion result);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dGeomGetAABB(dGeomID geom, [Out]dReal[] aabb);
+        internal static extern void dGeomGetAABB(dGeomID geom, out BoundingBox aabb);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dGeomIsSpace(dGeomID geom);
@@ -91,7 +91,12 @@ namespace Ode.Net.Native
         internal static extern int dGeomIsEnabled(dGeomID geom);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dGeomLowLevelControl(dGeomID geom, int controlClass, int controlCode, IntPtr dataValue, out int dataSize);
+        internal static extern int dGeomLowLevelControl(
+            dGeomID geom,
+            int controlClass,
+            int controlCode,
+            IntPtr dataValue,
+            out int dataSize);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomGetRelPointPos

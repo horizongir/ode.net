@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BodyTests.cs" />
+    <Compile Include="GeomTests.cs" />
     <Compile Include="JointTests.cs" />
     <Compile Include="LinearMotorTests.cs" />
     <Compile Include="MassTests.cs" />
