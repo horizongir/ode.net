@@ -11,6 +11,8 @@ namespace Ode.Net.Geoms
     [StructLayout(LayoutKind.Sequential)]
     public struct ContactGeom
     {
+        internal static readonly int Size = Marshal.SizeOf(typeof(ContactGeom));
+
         Vector3 pos;
         Vector3 normal;
         dReal depth;

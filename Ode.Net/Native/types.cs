@@ -74,7 +74,7 @@ namespace Ode.Net.Native
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    delegate void dNearCallback(IntPtr data, dGeomID o1, dGeomID o2);
+    delegate void dNearCallback(IntPtr data, IntPtr o1, IntPtr o2);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate dReal dHeightfieldGetHeight(IntPtr p_user_data, int x, int z);

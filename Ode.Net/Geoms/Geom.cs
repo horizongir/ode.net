@@ -91,6 +91,11 @@ namespace Ode.Net.Geoms
             }
         }
 
+        public Space Space
+        {
+            get { return Space.FromIntPtr(NativeMethods.dGeomGetSpace(id)); }
+        }
+
         public GeomClass Class
         {
             get { return NativeMethods.dGeomGetClass(id); }
@@ -401,6 +406,57 @@ namespace Ode.Net.Geoms
         public void ClearOffset()
         {
             NativeMethods.dGeomClearOffset(id);
+        }
+
+        /// <summary>
+        /// Generates contact information between two specified geoms that potentially intersect.
+        /// </summary>
+        /// <param name="geom1">The first geom to test for contact.</param>
+        /// <param name="geom2">The second geom to test for contact.</param>
+        /// <param name="contacts">
+        /// The array that will hold contact information. The length of the array determines
+        /// the maximum number of contacts that can be generated.
+        /// </param>
+        /// <returns>
+        /// The number of generated contact points, if the geoms intersect; otherwise, zero.
+        /// </returns>
+        public static int Collide(Geom geom1, Geom geom2, ContactGeom[] contacts)
+        {
+            return Collide(geom1, geom2, contacts, ContactGenerationFlags.None);
+        }
+
+        /// <summary>
+        /// Generates contact information between two specified geoms that potentially intersect.
+        /// </summary>
+        /// <param name="geom1">The first geom to test for contact.</param>
+        /// <param name="geom2">The second geom to test for contact.</param>
+        /// <param name="contacts">
+        /// The array that will hold contact information. The length of the array determines
+        /// the maximum number of contacts that can be generated.
+        /// </param>
+        /// <param name="flags">Specifies contact generation options.</param>
+        /// <returns>
+        /// The number of generated contact points, if the geoms intersect; otherwise, zero.
+        /// </returns>
+        public static int Collide(Geom geom1, Geom geom2, ContactGeom[] contacts, ContactGenerationFlags flags)
+        {
+            if (geom1 == null)
+            {
+                throw new ArgumentNullException("geom1");
+            }
+
+            if (geom2 == null)
+            {
+                throw new ArgumentNullException("geom2");
+            }
+
+            if (contacts == null)
+            {
+                throw new ArgumentNullException("contacts");
+            }
+
+            flags |= (ContactGenerationFlags)((ushort)contacts.Length);
+            return NativeMethods.dCollide(geom1.id, geom2.id, flags, contacts, ContactGeom.Size);
         }
 
         public void Dispose()

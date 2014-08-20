@@ -16,7 +16,7 @@ namespace Ode.Net.Native
         {
         }
 
-        private dGeomID(bool ownsHandle)
+        internal dGeomID(bool ownsHandle)
             : base(ownsHandle)
         {
         }

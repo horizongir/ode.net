@@ -64,7 +64,7 @@ namespace Ode.Net.Native
         internal static extern int dGeomIsSpace(dGeomID geom);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dSpaceID dGeomGetSpace(dGeomID geom);
+        internal static extern IntPtr dGeomGetSpace(dGeomID geom);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern GeomClass dGeomGetClass(dGeomID geom);
@@ -165,14 +165,12 @@ namespace Ode.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomGetOffsetQuaternion(dGeomID geom, out Quaternion result);
 
-        const uint CONTACTS_UNIMPORTANT = 0x80000000;
-
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dCollide(
             dGeomID o1,
             dGeomID o2,
-            int flags,
-            out ContactGeom contact,
+            ContactGenerationFlags flags,
+            [Out]ContactGeom[] contact,
             int skip);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
@@ -357,6 +355,70 @@ namespace Ode.Net.Native
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dHeightfieldDataID dGeomHeightfieldGetHeightfieldData(dGeomID g);
+
+        #endregion
+
+        #region Space
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dSpaceID dSimpleSpaceCreate(dSpaceID space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dSpaceID dHashSpaceCreate(dSpaceID space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dSpaceID dQuadTreeSpaceCreate(dSpaceID space, ref Vector3 Center, ref Vector3 Extents, int Depth);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dSpaceID dSweepAndPruneSpaceCreate(dSpaceID space, int axisorder);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dSpaceDestroy(IntPtr space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dHashSpaceSetLevels(dSpaceID space, int minlevel, int maxlevel);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dHashSpaceGetLevels(dSpaceID space, out int minlevel, out int maxlevel);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dSpaceSetCleanup(dSpaceID space, int mode);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dSpaceGetCleanup(dSpaceID space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dSpaceSetSublevel(dSpaceID space, int sublevel);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dSpaceGetSublevel(dSpaceID space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dSpaceSetManualCleanup(dSpaceID space, int mode);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dSpaceGetManualCleanup(dSpaceID space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dSpaceAdd(dSpaceID space, dGeomID geom);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dSpaceRemove(dSpaceID space, dGeomID geom);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dSpaceQuery(dSpaceID space, dGeomID geom);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dSpaceClean(dSpaceID space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dSpaceGetNumGeoms(dSpaceID space);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dSpaceGetGeom(dSpaceID space, int i);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dSpaceGetClass(dSpaceID space);
 
         #endregion
     }
