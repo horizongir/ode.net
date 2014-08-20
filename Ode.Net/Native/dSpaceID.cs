@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ode.Net.Native
 {
-    class dSpaceID : SafeHandleZeroOrMinusOneIsInvalid
+    class dSpaceID : dGeomID
     {
-        internal static readonly dSpaceID Null = new NulldSpaceID();
+        internal new static readonly dSpaceID Null = new NulldSpaceID();
 
         internal dSpaceID()
             : base(true)
@@ -23,7 +23,7 @@ namespace Ode.Net.Native
 
         protected override bool ReleaseHandle()
         {
-            NativeMethods.dWorldDestroy(handle);
+            NativeMethods.dSpaceDestroy(handle);
             return true;
         }
 
