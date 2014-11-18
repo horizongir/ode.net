@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Ode.Net.Geoms
 {
+    /// <summary>
+    /// Represents a geometry object, or geom, used for collision detection.
+    /// </summary>
     public abstract class Geom : IDisposable
     {
         readonly dGeomID id;
@@ -33,12 +36,23 @@ namespace Ode.Net.Geoms
             return (Geom)handle.Target;
         }
 
+        /// <summary>
+        /// Gets or sets the object that contains data about the geom.
+        /// </summary>
+        public object Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rigid body associated with a placeable geom.
+        /// </summary>
         public Body Body
         {
             get { return Body.FromIntPtr(NativeMethods.dGeomGetBody(id)); }
             set { NativeMethods.dGeomSetBody(id, value != null ? value.Id : dBodyID.Null); }
         }
 
+        /// <summary>
+        /// Gets or sets the position vector of the placeable geom.
+        /// </summary>
         public Vector3 Position
         {
             get
@@ -53,6 +67,9 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the rotation matrix of the placeable geom.
+        /// </summary>
         public Matrix3 Rotation
         {
             get
@@ -67,6 +84,9 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the orientation quaternion of the geom.
+        /// </summary>
         public Quaternion Quaternion
         {
             get
@@ -81,6 +101,10 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets the axis aligned bounding box that surrounds the geom. If the geom is a space,
+        /// the bounding box that surrounds all contained geoms is returned.
+        /// </summary>
         public BoundingBox AxisAlignedBoundingBox
         {
             get
@@ -91,28 +115,43 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets the space in which the geom is contained.
+        /// </summary>
         public Space Space
         {
             get { return Space.FromIntPtr(NativeMethods.dGeomGetSpace(id)); }
         }
 
+        /// <summary>
+        /// Gets the geom class code.
+        /// </summary>
         public GeomClass Class
         {
             get { return NativeMethods.dGeomGetClass(id); }
         }
 
+        /// <summary>
+        /// Gets or sets the category bitfield for the geom.
+        /// </summary>
         public int CategoryBits
         {
             get { return (int)NativeMethods.dGeomGetCategoryBits(id); }
             set { NativeMethods.dGeomSetCategoryBits(id, (uint)value); }
         }
 
+        /// <summary>
+        /// Gets or sets the collide bitfield for the geom.
+        /// </summary>
         public int CollideBits
         {
             get { return (int)NativeMethods.dGeomGetCollideBits(id); }
             set { NativeMethods.dGeomSetCollideBits(id, (uint)value); }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the geom is enabled.
+        /// </summary>
         public bool Enabled
         {
             get { return NativeMethods.dGeomIsEnabled(id) != 0; }
@@ -459,6 +498,9 @@ namespace Ode.Net.Geoms
             return NativeMethods.dCollide(geom1.id, geom2.id, flags, contacts, ContactGeom.Size);
         }
 
+        /// <summary>
+        /// Destroys the geom.
+        /// </summary>
         public void Dispose()
         {
             if (!id.IsInvalid)

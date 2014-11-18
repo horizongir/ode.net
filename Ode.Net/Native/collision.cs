@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using dReal = System.Single;
+using dTriIndex = System.Int32;
 
 namespace Ode.Net.Native
 {
@@ -370,7 +371,7 @@ namespace Ode.Net.Native
         internal static extern dSpaceID dQuadTreeSpaceCreate(dSpaceID space, ref Vector3 Center, ref Vector3 Extents, int Depth);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dSpaceID dSweepAndPruneSpaceCreate(dSpaceID space, int axisorder);
+        internal static extern dSpaceID dSweepAndPruneSpaceCreate(dSpaceID space, AxisOrder axisorder);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dSpaceDestroy(IntPtr space);
@@ -419,6 +420,133 @@ namespace Ode.Net.Native
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dSpaceGetClass(dSpaceID space);
+
+        #endregion
+
+        #region TriMesh
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dTriMeshDataID dGeomTriMeshDataCreate();
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataDestroy(IntPtr g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataSet(dTriMeshDataID g, dTriMeshDataType data_id, IntPtr in_data);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dGeomTriMeshDataGet(dTriMeshDataID g, dTriMeshDataType data_id);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshSetLastTransform(dGeomID g, ref Matrix4 last_trans);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr dGeomTriMeshGetLastTransform(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataBuildSingle(
+            dTriMeshDataID g,
+            IntPtr Vertices, int VertexStride, int VertexCount,
+            IntPtr Indices, int IndexCount, int TriStride);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataBuildSingle1(
+            dTriMeshDataID g,
+            IntPtr Vertices, int VertexStride, int VertexCount,
+            IntPtr Indices, int IndexCount, int TriStride,
+            IntPtr Normals);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataBuildDouble(
+            dTriMeshDataID g,
+            IntPtr Vertices, int VertexStride, int VertexCount,
+            IntPtr Indices, int IndexCount, int TriStride);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataBuildDouble1(
+            dTriMeshDataID g,
+            IntPtr Vertices, int VertexStride, int VertexCount,
+            IntPtr Indices, int IndexCount, int TriStride,
+            IntPtr Normals);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataBuildSimple(
+            dTriMeshDataID g,
+            IntPtr Vertices, int VertexCount,
+            IntPtr Indices, int IndexCount);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataBuildSimple1(
+            dTriMeshDataID g,
+            IntPtr Vertices, int VertexCount,
+            IntPtr Indices, int IndexCount,
+            IntPtr Normals);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataPreprocess(dTriMeshDataID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataGetBuffer(dTriMeshDataID g, out IntPtr buf, out int bufLen);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataSetBuffer(dTriMeshDataID g, IntPtr buf);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshSetCallback(dGeomID g, dTriCallback Callback);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dTriCallback dGeomTriMeshGetCallback(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshSetArrayCallback(dGeomID g, dTriArrayCallback ArrayCallback);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dTriArrayCallback dGeomTriMeshGetArrayCallback(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshSetRayCallback(dGeomID g, dTriRayCallback Callback);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dTriRayCallback dGeomTriMeshGetRayCallback(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshSetTriMergeCallback(dGeomID g, dTriTriMergeCallback Callback);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dTriTriMergeCallback dGeomTriMeshGetTriMergeCallback(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dGeomID dCreateTriMesh(dSpaceID space, dTriMeshDataID Data, dTriCallback Callback, dTriArrayCallback ArrayCallback, dTriRayCallback RayCallback);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshSetData(dGeomID g, dTriMeshDataID Data);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dTriMeshDataID dGeomTriMeshGetData(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshEnableTC(dGeomID g, int geomClass, int enable);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dGeomTriMeshIsTCEnabled(dGeomID g, int geomClass);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshClearTCCache(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern dTriMeshDataID dGeomTriMeshGetTriMeshDataID(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshGetTriangle(dGeomID g, int Index, out Vector3 v0, out Vector3 v1, out Vector3 v2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshGetPoint(dGeomID g, int Index, dReal u, dReal v, out Vector3 Out);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int dGeomTriMeshGetTriangleCount(dGeomID g);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomTriMeshDataUpdate(dTriMeshDataID g);
 
         #endregion
     }

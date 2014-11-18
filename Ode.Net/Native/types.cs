@@ -73,9 +73,26 @@ namespace Ode.Net.Native
         dParamERP
     }
 
+    enum dTriMeshDataType
+    {
+        FaceNormals
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate void dNearCallback(IntPtr data, IntPtr o1, IntPtr o2);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate dReal dHeightfieldGetHeight(IntPtr p_user_data, int x, int z);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate int dTriCallback(IntPtr TriMesh, IntPtr RefObject, int TriangleIndex);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate void dTriArrayCallback(IntPtr TriMesh, IntPtr RefObject, IntPtr TriIndices, int TriCount);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate int dTriRayCallback(IntPtr TriMesh, IntPtr Ray, int TriangleIndex, dReal u, dReal v);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate int dTriTriMergeCallback(IntPtr TriMesh, int FirstTriangleIndex, int SecondTriangleIndex);
 }
