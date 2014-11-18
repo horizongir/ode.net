@@ -49,13 +49,17 @@
     <Compile Include="Geoms\Contact.cs" />
     <Compile Include="Geoms\ContactGenerationFlags.cs" />
     <Compile Include="Geoms\ContactGeom.cs" />
+    <Compile Include="Geoms\ContactModes.cs" />
     <Compile Include="Geoms\Geom.cs" />
     <Compile Include="Geoms\GeomClass.cs" />
     <Compile Include="Geoms\HashSpace.cs" />
     <Compile Include="Geoms\QuadTreeSpace.cs" />
+    <Compile Include="Geoms\AxisOrder.cs" />
     <Compile Include="Geoms\SimpleSpace.cs" />
     <Compile Include="Geoms\Space.cs" />
     <Compile Include="Geoms\Sphere.cs" />
+    <Compile Include="Geoms\SurfaceParameters.cs" />
+    <Compile Include="Geoms\SweepAndPruneSpace.cs" />
     <Compile Include="Joints\AngularMotor.cs" />
     <Compile Include="Joints\Ball.cs" />
     <Compile Include="Joints\DoubleBall.cs" />
@@ -79,8 +83,10 @@
     <Compile Include="Joints\Universal.cs" />
     <Compile Include="Mass.cs" />
     <Compile Include="Matrix3.cs" />
+    <Compile Include="Matrix4.cs" />
     <Compile Include="Native\collision.cs" />
     <Compile Include="Native\common.cs" />
+    <Compile Include="Native\dTriMeshDataID.cs" />
     <Compile Include="Native\dHeightfieldDataID.cs" />
     <Compile Include="Native\dSpaceID.cs" />
     <Compile Include="Native\dJointFeedbackHandle.cs" />
@@ -97,6 +103,7 @@
     <Compile Include="Ode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quaternion.cs" />
+    <Compile Include="Geoms\TriMeshData.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="Vector3.cs" />
     <Compile Include="Vector4.cs" />
