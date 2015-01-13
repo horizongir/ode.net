@@ -93,7 +93,6 @@
     <Compile Include="Joints\Universal.cs" />
     <Compile Include="Mass.cs" />
     <Compile Include="Matrix3.cs" />
-    <Compile Include="Matrix4.cs" />
     <Compile Include="Native\collision.cs" />
     <Compile Include="Native\common.cs" />
     <Compile Include="Native\dTriMeshDataID.cs" />
