@@ -468,7 +468,7 @@ namespace Ode.Net.Native
         internal static extern dJointID dJointCreateSlider(dWorldID w, dJointGroupID g);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern dJointID dJointCreateContact(dWorldID w, dJointGroupID g, ref Contact c);
+        internal static extern dJointID dJointCreateContact(dWorldID w, dJointGroupID g, ref ContactInfo c);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dJointID dJointCreateHinge2(dWorldID w, dJointGroupID g);

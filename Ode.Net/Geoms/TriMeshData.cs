@@ -27,6 +27,11 @@ namespace Ode.Net.Geoms
             id = NativeMethods.dGeomTriMeshDataCreate();
         }
 
+        internal dTriMeshDataID Id
+        {
+            get { return id; }
+        }
+
         /// <summary>
         /// Builds the triangle mesh data object with single precision vertex data.
         /// </summary>
@@ -161,6 +166,15 @@ namespace Ode.Net.Geoms
         public void Preprocess()
         {
             NativeMethods.dGeomTriMeshDataPreprocess(id);
+        }
+
+        /// <summary>
+        /// Efficiently updates the internal triangle representation when dynamically
+        /// deforming mesh vertices.
+        /// </summary>
+        public void Update()
+        {
+            NativeMethods.dGeomTriMeshDataUpdate(id);
         }
 
         private static void ReleaseDataStore(ref IntPtr storeHandle)

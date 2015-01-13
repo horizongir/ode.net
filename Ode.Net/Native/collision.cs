@@ -195,11 +195,11 @@ namespace Ode.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dGeomID dCreateConvex(
             dSpaceID space,
-            dReal[] _planes,
+            IntPtr _planes,
             uint _planecount,
-            dReal[] _points,
+            IntPtr _points,
             uint _pointcount,
-            uint[] _polygons);
+            IntPtr _polygons);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomSetConvex(
@@ -284,24 +284,31 @@ namespace Ode.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dGeomRayGetClosestHit(dGeomID g);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dGeomID dCreateGeomTransform(dSpaceID space);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTransformSetGeom(dGeomID g, dGeomID obj);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dGeomID dGeomTransformGetGeom(dGeomID g);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTransformSetCleanup(dGeomID g, int mode);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dGeomTransformGetCleanup(dGeomID g);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTransformSetInfo(dGeomID g, int mode);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int dGeomTransformGetInfo(dGeomID g);
 
@@ -330,8 +337,20 @@ namespace Ode.Net.Native
                         dReal scale, dReal offset, dReal thickness, int bWrap);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomHeightfieldDataBuildByte(dHeightfieldDataID d,
+                        IntPtr pHeightData, int bCopyHeightData,
+                        dReal width, dReal depth, int widthSamples, int depthSamples,
+                        dReal scale, dReal offset, dReal thickness, int bWrap);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomHeightfieldDataBuildShort(dHeightfieldDataID d,
                         short[] pHeightData, int bCopyHeightData,
+                        dReal width, dReal depth, int widthSamples, int depthSamples,
+                        dReal scale, dReal offset, dReal thickness, int bWrap);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomHeightfieldDataBuildShort(dHeightfieldDataID d,
+                        IntPtr pHeightData, int bCopyHeightData,
                         dReal width, dReal depth, int widthSamples, int depthSamples,
                         dReal scale, dReal offset, dReal thickness, int bWrap);
 
@@ -342,8 +361,20 @@ namespace Ode.Net.Native
                         dReal scale, dReal offset, dReal thickness, int bWrap);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomHeightfieldDataBuildSingle(dHeightfieldDataID d,
+                        IntPtr pHeightData, int bCopyHeightData,
+                        dReal width, dReal depth, int widthSamples, int depthSamples,
+                        dReal scale, dReal offset, dReal thickness, int bWrap);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomHeightfieldDataBuildDouble(dHeightfieldDataID d,
                         double[] pHeightData, int bCopyHeightData,
+                        dReal width, dReal depth, int widthSamples, int depthSamples,
+                        dReal scale, dReal offset, dReal thickness, int bWrap);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void dGeomHeightfieldDataBuildDouble(dHeightfieldDataID d,
+                        IntPtr pHeightData, int bCopyHeightData,
                         dReal width, dReal depth, int widthSamples, int depthSamples,
                         dReal scale, dReal offset, dReal thickness, int bWrap);
 
@@ -525,10 +556,10 @@ namespace Ode.Net.Native
         internal static extern dTriMeshDataID dGeomTriMeshGetData(dGeomID g);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void dGeomTriMeshEnableTC(dGeomID g, int geomClass, int enable);
+        internal static extern void dGeomTriMeshEnableTC(dGeomID g, GeomClass geomClass, int enable);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int dGeomTriMeshIsTCEnabled(dGeomID g, int geomClass);
+        internal static extern int dGeomTriMeshIsTCEnabled(dGeomID g, GeomClass geomClass);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshClearTCCache(dGeomID g);

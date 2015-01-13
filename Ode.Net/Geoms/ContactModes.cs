@@ -19,10 +19,10 @@ namespace Ode.Net.Geoms
         Mu2 = 0x001,
 
         /// <summary>
-        /// Specifies whether to take FDir1 as friction direction 1, otherwise automatically
-        /// compute friction direction 1 to be perpendicular to the contact normal.
+        /// Specifies whether to take FrictionDirection1 as friction direction 1, otherwise
+        /// automatically compute friction direction 1 to be perpendicular to the contact normal.
         /// </summary>
-        FDir1 = 0x002,
+        FrictionDirection1 = 0x002,
 
         /// <summary>
         /// Specifies whether the contact surface is bouncy. The exact amount of bouncyness
@@ -34,13 +34,13 @@ namespace Ode.Net.Geoms
         /// Specifies whether the error reduction parameter of the contact normal can be set
         /// with the SoftERP parameter. This is useful to make surfaces soft.
         /// </summary>
-        SoftERP = 0x008,
+        SoftErp = 0x008,
 
         /// <summary>
         /// Specifies whether the constraint force mixing parameter of the contact normal can
         /// be set with the SoftCFM parameter. This is useful to make surfaces soft.
         /// </summary>
-        SoftCFM = 0x010,
+        SoftCfm = 0x010,
 
         /// <summary>
         /// Specifies whether the contact surface is assumed to be moving independently of the
