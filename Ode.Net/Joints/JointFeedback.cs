@@ -11,6 +11,9 @@ namespace Ode.Net.Joints
     {
         readonly dJointFeedbackHandle handle;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JointFeedback"/> class.
+        /// </summary>
         public JointFeedback()
         {
             handle = new dJointFeedbackHandle();
