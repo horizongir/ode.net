@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ode.Net.Geoms
 {
-    public class SweepAndPruneSpace : Space
+    public sealed class SweepAndPruneSpace : Space
     {
         public SweepAndPruneSpace(AxisOrder axisOrder)
             : this(null, axisOrder)

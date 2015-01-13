@@ -95,4 +95,7 @@ namespace Ode.Net.Native
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int dTriTriMergeCallback(IntPtr TriMesh, int FirstTriangleIndex, int SecondTriangleIndex);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate void dMessageFunction(int errnum, string msg, IntPtr ap);
 }
