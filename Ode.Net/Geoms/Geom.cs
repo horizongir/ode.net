@@ -162,6 +162,9 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the local offset position of a geom from its body.
+        /// </summary>
         public Vector3 OffsetPosition
         {
             get
@@ -176,6 +179,9 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the local offset rotation matrix of a geom from its body.
+        /// </summary>
         public Matrix3 OffsetRotation
         {
             get
@@ -190,6 +196,9 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets or sets the local offset orientation quaternion of a geom from its body.
+        /// </summary>
         public Quaternion OffsetQuaternion
         {
             get
@@ -204,6 +213,9 @@ namespace Ode.Net.Geoms
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the geom has an offset.
+        /// </summary>
         public bool IsOffset
         {
             get { return NativeMethods.dGeomIsOffset(id) != 0; }
