@@ -468,9 +468,11 @@ namespace Ode.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr dGeomTriMeshDataGet(dTriMeshDataID g, dTriMeshDataType data_id);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshSetLastTransform(dGeomID g, ref Matrix4 last_trans);
 
+        [Obsolete]
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr dGeomTriMeshGetLastTransform(dGeomID g);
 

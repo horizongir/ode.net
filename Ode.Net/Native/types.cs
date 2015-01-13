@@ -55,6 +55,15 @@ namespace Ode.Net.Native
         internal Vector3 t2;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct Matrix4
+    {
+        internal Vector4 Row1;
+        internal Vector4 Row2;
+        internal Vector4 Row3;
+        internal Vector4 Row4;
+    }
+
     enum dJointParam
     {
         dParamLoStop = 0x000,
