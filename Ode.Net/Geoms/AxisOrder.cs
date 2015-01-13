@@ -8,7 +8,7 @@ namespace Ode.Net.Geoms
 {
     /// <summary>
     /// Specifies the possible spatial axes order for the
-    /// sweep and prune collision space.
+    /// sweep-and-prune collision space.
     /// </summary>
     public enum AxisOrder
     {
