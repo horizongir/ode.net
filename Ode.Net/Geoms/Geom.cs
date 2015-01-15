@@ -511,17 +511,34 @@ namespace Ode.Net.Geoms
         }
 
         /// <summary>
+        /// Releases the unmanaged resources used by the <see cref="Geom"/> class
+        /// specifying whether to perform a normal dispose operation.
+        /// </summary>
+        /// <param name="disposing">
+        /// <b>true</b> for a normal dispose operation; <b>false</b> to finalize
+        /// the geom.
+        /// </param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!id.IsInvalid)
+            {
+                if (disposing)
+                {
+                    var handlePtr = NativeMethods.dGeomGetData(id);
+                    var handle = GCHandle.FromIntPtr(handlePtr);
+                    handle.Free();
+                    id.Close();
+                }
+            }
+        }
+
+        /// <summary>
         /// Destroys the geom.
         /// </summary>
         public void Dispose()
         {
-            if (!id.IsInvalid)
-            {
-                var handlePtr = NativeMethods.dGeomGetData(id);
-                var handle = GCHandle.FromIntPtr(handlePtr);
-                handle.Free();
-                id.Close();
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

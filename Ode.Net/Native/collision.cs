@@ -204,11 +204,11 @@ namespace Ode.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomSetConvex(
             dGeomID g,
-            dReal[] _planes,
+            IntPtr _planes,
             uint _count,
-            dReal[] _points,
+            IntPtr _points,
             uint _pointcount,
-            uint[] _polygons);
+            IntPtr _polygons);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern dGeomID dCreateBox(dSpaceID space, dReal lx, dReal ly, dReal lz);
