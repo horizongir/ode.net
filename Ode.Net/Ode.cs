@@ -13,6 +13,13 @@ namespace Ode.Net
     /// </summary>
     public static class Ode
     {
+        static readonly dMessageFunction ErrorHandler = OnError;
+
+        private static void OnError(int errnum, string msg, IntPtr ap)
+        {
+            throw new OdeException(msg);
+        }
+
         /// <summary>
         /// Gets the specific ODE build configuration as a sequence of tokens.
         /// </summary>
@@ -48,6 +55,10 @@ namespace Ode.Net
             {
                 throw new InvalidOperationException("Failed to initialize ODE library.");
             }
+
+            NativeMethods.dSetErrorHandler(ErrorHandler);
+            NativeMethods.dSetMessageHandler(ErrorHandler);
+            NativeMethods.dSetDebugHandler(ErrorHandler);
         }
 
         /// <summary>
