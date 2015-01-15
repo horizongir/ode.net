@@ -25,6 +25,21 @@ namespace Ode.Net
         public static readonly Vector3 Zero = new Vector3(0, 0, 0);
 
         /// <summary>
+        /// Represents a unit-length <see cref="Vector3"/> that points towards the X axis.
+        /// </summary>
+        public static readonly Vector3 UnitX = new Vector3(1, 0, 0);
+
+        /// <summary>
+        /// Represents a unit-length <see cref="Vector3"/> that points towards the Y axis.
+        /// </summary>
+        public static readonly Vector3 UnitY = new Vector3(0, 1, 0);
+
+        /// <summary>
+        /// Represents a unit-length <see cref="Vector3"/> that points towards the Z axis.
+        /// </summary>
+        public static readonly Vector3 UnitZ = new Vector3(0, 0, 1);
+
+        /// <summary>
         /// Specifies the x-component of the vector.
         /// </summary>
         public dReal X;
