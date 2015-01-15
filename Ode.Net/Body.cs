@@ -107,7 +107,7 @@ namespace Ode.Net
         /// <summary>
         /// Gets or sets the object that contains data about the rigid body.
         /// </summary>
-        public object Data { get; set; }
+        public object Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the position of the rigid body.

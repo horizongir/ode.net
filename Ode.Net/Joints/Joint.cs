@@ -61,7 +61,7 @@ namespace Ode.Net.Joints
         /// <summary>
         /// Gets or sets the object that contains data about the joint.
         /// </summary>
-        public object Data { get; set; }
+        public object Tag { get; set; }
 
         /// <summary>
         /// Gets the type of the joint.

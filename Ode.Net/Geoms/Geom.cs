@@ -39,7 +39,7 @@ namespace Ode.Net.Geoms
         /// <summary>
         /// Gets or sets the object that contains data about the geom.
         /// </summary>
-        public object Data { get; set; }
+        public object Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the rigid body associated with a placeable geom.
