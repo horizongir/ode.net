@@ -9,15 +9,55 @@ using dReal = System.Single;
 
 namespace Ode.Net.Geoms
 {
+    /// <summary>
+    /// Represents a convex hull geom.
+    /// </summary>
     public sealed class Convex : Geom
     {
         ConvexData data;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Convex"/> class with the
+        /// specified convex hull data.
+        /// </summary>
+        /// <param name="planes">
+        /// The planes' definition array. Each polygon in the convex hull will be
+        /// attached to one of these planes. Each plane is defined by a quadruplet
+        /// of the a, b, c and d parameters of the plane equation.
+        /// </param>
+        /// <param name="points">
+        /// The array of points, aligned in triplets of x, y and z components.
+        /// </param>
+        /// <param name="polygons">
+        /// The polygons' definition array. Each element in the array is an index
+        /// to a previously defined point in the array of point triplets.
+        /// Each polygon definition sequence begins and ends in the same point.
+        /// There must be as many polygon definition sequences as the number of planes.
+        /// </param>
         public Convex(dReal[] planes, dReal[] points, int[] polygons)
             : this(null, planes, points, polygons)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Convex"/> class on the
+        /// given space and with the specified convex hull data.
+        /// </summary>
+        /// <param name="space">The space that is to contain the geom.</param>
+        /// <param name="planes">
+        /// The planes' definition array. Each polygon in the convex hull will be
+        /// attached to one of these planes. Each plane is defined by a quadruplet
+        /// of the a, b, c and d parameters of the plane equation.
+        /// </param>
+        /// <param name="points">
+        /// The array of points, aligned in triplets of x, y and z components.
+        /// </param>
+        /// <param name="polygons">
+        /// The polygons' definition array. Each element in the array is an index
+        /// to a previously defined point in the array of point triplets.
+        /// Each polygon definition sequence begins and ends in the same point.
+        /// There must be as many polygon definition sequences as the number of planes.
+        /// </param>
         public Convex(Space space, dReal[] planes, dReal[] points, int[] polygons)
             : this(space, new ConvexData(planes, points, polygons))
         {
@@ -29,10 +69,59 @@ namespace Ode.Net.Geoms
                                                data._points, data._pointCount,
                                                data._polygons))
         {
+            this.data = data;
         }
 
+        /// <summary>
+        /// Sets the convex hull data.
+        /// </summary>
+        /// <param name="planes">
+        /// The planes' definition array. Each polygon in the convex hull will be
+        /// attached to one of these planes. Each plane is defined by a quadruplet
+        /// of the a, b, c and d parameters of the plane equation.
+        /// </param>
+        /// <param name="points">
+        /// The array of points, aligned in triplets of x, y and z components.
+        /// </param>
+        /// <param name="polygons">
+        /// The polygons' definition array. Each element in the array is an index
+        /// to a previously defined point in the array of point triplets.
+        /// Each polygon definition sequence begins and ends in the same point.
+        /// There must be as many polygon definition sequences as the number of planes.
+        /// </param>
         public void SetConvex(dReal[] planes, dReal[] points, int[] polygons)
         {
+            if (data != null)
+            {
+                data.Dispose();
+            }
+
+            data = new ConvexData(planes, points, polygons);
+            NativeMethods.dGeomSetConvex(Id, data._planes, data._planeCount,
+                                         data._points, data._pointCount,
+                                         data._polygons);
+        }
+
+        /// <summary>
+        /// Releases the unmanaged resources used by the <see cref="Convex"/> class
+        /// specifying whether to perform a normal dispose operation.
+        /// </summary>
+        /// <param name="disposing">
+        /// <b>true</b> for a normal dispose operation; <b>false</b> to finalize
+        /// the geom.
+        /// </param>
+        protected override void Dispose(bool disposing)
+        {
+            if (data != null)
+            {
+                if (disposing)
+                {
+                    data.Dispose();
+                    data = null;
+                }
+            }
+
+            base.Dispose(disposing);
         }
 
         class ConvexData : IDisposable
@@ -55,6 +144,11 @@ namespace Ode.Net.Geoms
                 Marshal.Copy(polygons, 0, _polygons, polygons.Length);
             }
 
+            ~ConvexData()
+            {
+                Dispose(false);
+            }
+
             private static void ReleaseDataStore(ref IntPtr storeHandle)
             {
                 if (storeHandle != IntPtr.Zero)
@@ -65,11 +159,17 @@ namespace Ode.Net.Geoms
                 storeHandle = IntPtr.Zero;
             }
 
-            public void Dispose()
+            private void Dispose(bool disposing)
             {
                 ReleaseDataStore(ref _planes);
                 ReleaseDataStore(ref _points);
                 ReleaseDataStore(ref _polygons);
+            }
+
+            public void Dispose()
+            {
+                Dispose(true);
+                GC.SuppressFinalize(this);
             }
         }
     }
