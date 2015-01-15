@@ -46,6 +46,9 @@ namespace Ode.Net.Geoms
             this.data = data;
         }
 
+        /// <summary>
+        /// Gets or sets the heightfield data object.
+        /// </summary>
         public HeightfieldData Data
         {
             get { return data; }

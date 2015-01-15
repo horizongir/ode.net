@@ -42,6 +42,9 @@ namespace Ode.Net.Geoms
             this.data = data;
         }
 
+        /// <summary>
+        /// Gets or sets the triangle mesh data object.
+        /// </summary>
         public TriMeshData Data
         {
             get { return data; }
