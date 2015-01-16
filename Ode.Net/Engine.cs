@@ -11,7 +11,7 @@ namespace Ode.Net
     /// <summary>
     /// This class provides methods for ODE initialization and finalization.
     /// </summary>
-    public static class Ode
+    public static class Engine
     {
         static readonly dMessageFunction ErrorHandler = OnError;
 
