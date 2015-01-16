@@ -27,7 +27,7 @@ namespace Ode.Net
 
     /// <summary>
     /// Specifies which data is to be pre-allocated in calls to
-    /// <see cref="Ode.AllocateDataForThread"/>.
+    /// <see cref="Engine.AllocateDataForThread"/>.
     /// </summary>
     [Flags]
     public enum AllocateDataFlags

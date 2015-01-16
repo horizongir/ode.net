@@ -25,8 +25,8 @@ namespace Ode.Net.UnitTests
         {
             const dReal StepSize = (dReal)0.1;
 
-            Ode.Init();
-            Ode.AllocateDataForThread(AllocateDataFlags.All);
+            Engine.Init();
+            Engine.AllocateDataForThread(AllocateDataFlags.All);
             using (var world = new World())
             using (var body1 = new Body(world))
             using (var body2 = new Body(world))
@@ -45,7 +45,7 @@ namespace Ode.Net.UnitTests
                 world.QuickStep(StepSize);
                 Assert.AreNotEqual(Vector3.Zero, joint.Feedback.ForceOnBody1);
             }
-            Ode.Close();
+            Engine.Close();
         }
     }
 }

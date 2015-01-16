@@ -137,7 +137,7 @@
     <Compile Include="Native\odeinit.cs" />
     <Compile Include="Native\types.cs" />
     <Compile Include="Native\utils.cs" />
-    <Compile Include="Ode.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="OdeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quaternion.cs" />
