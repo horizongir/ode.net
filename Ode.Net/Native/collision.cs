@@ -5,8 +5,14 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using dReal = System.Single;
 using dTriIndex = System.Int32;
+#if SINGLE_PRECISION
+using dReal = System.Single;
+#elif DOUBLE_PRECISION
+using dReal = System.Double;
+#else
+#error You must define SINGLE_PRECISION or DOUBLE_PRECISION
+#endif
 
 namespace Ode.Net.Native
 {
