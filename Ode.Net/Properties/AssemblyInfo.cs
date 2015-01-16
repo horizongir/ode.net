@@ -6,8 +6,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ode.Net")]
-[assembly: AssemblyDescription("")]
+#if SINGLE_PRECISION
+[assembly: AssemblyTitle("ODE.NET - Single Precision")]
+#elif DOUBLE_PRECISION
+[assembly: AssemblyTitle("ODE.NET - Double Precision")]
+#else
+#error You must define SINGLE_PRECISION or DOUBLE_PRECISION
+#endif
+[assembly: AssemblyDescription("A .NET interface for the popular ODE physics engine.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gonçalo Lopes")]
 [assembly: AssemblyProduct("Ode.Net")]
