@@ -348,9 +348,9 @@ namespace Ode.Net
         /// <param name="value1">The first source vector.</param>
         /// <param name="value2">The second source vector.</param>
         /// <returns>The dot product of the two source vectors.</returns>
-        public static float Dot(Vector3 value1, Vector3 value2)
+        public static dReal Dot(Vector3 value1, Vector3 value2)
         {
-            float result;
+            dReal result;
             Dot(ref value1, ref value2, out result);
             return result;
         }
@@ -361,7 +361,7 @@ namespace Ode.Net
         /// <param name="value1">The first source vector.</param>
         /// <param name="value2">The second source vector.</param>
         /// <param name="result">The dot product of the two source vectors.</param>
-        public static void Dot(ref Vector3 value1, ref Vector3 value2, out float result)
+        public static void Dot(ref Vector3 value1, ref Vector3 value2, out dReal result)
         {
             result = value1.X * value2.X + value1.Y * value2.Y + value1.Z * value2.Z;
         }
