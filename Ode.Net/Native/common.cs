@@ -9,7 +9,13 @@ namespace Ode.Net.Native
 {
     static partial class NativeMethods
     {
+#if SINGLE_PRECISION
         const string libName = "ode_single";
+#elif DOUBLE_PRECISION
+        const string libName = "ode_double";
+#else
+#error You must define SINGLE_PRECISION or DOUBLE_PRECISION
+#endif
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr dGetConfiguration();
