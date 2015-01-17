@@ -162,7 +162,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <Target Name="BeforeBuild">
+  <Target Name="BeforeBuild" Condition="'$(Configuration)' == 'ReleaseSingle' Or '$(Configuration)' == 'ReleaseDouble'">
     <ItemGroup Label="single" Condition="'$(Precision)' == 'Single'">
       <CopyDll32 Include="$(MSBuildThisFileDirectory)../ode/Win32/vc11/Release/ode_single.dll" />
     </ItemGroup>
