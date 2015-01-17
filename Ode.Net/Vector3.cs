@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -140,7 +141,7 @@ namespace Ode.Net
         /// </returns>
         public override string ToString()
         {
-            return string.Format("({0}, {1}, {2})", X, Y, Z);
+            return string.Format(CultureInfo.InvariantCulture, "({0}, {1}, {2})", X, Y, Z);
         }
 
         /// <summary>

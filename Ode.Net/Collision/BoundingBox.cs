@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -110,6 +111,7 @@ namespace Ode.Net.Collision
         public override string ToString()
         {
             return string.Format(
+                CultureInfo.InvariantCulture,
                 "{{Min:{0} Max:{1}}}",
                 new Vector3(MinX, MinY, MinZ),
                 new Vector3(MaxX, MaxY, MaxZ));

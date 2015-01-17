@@ -2,6 +2,7 @@
 using Ode.Net.Native;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -120,6 +121,7 @@ namespace Ode.Net
         public override string ToString()
         {
             return string.Format(
+                CultureInfo.InvariantCulture,
                 "{{TotalMass: {0}, Center: {1}, Inertia: {2}}}",
                 TotalMass, Center, Inertia);
         }
