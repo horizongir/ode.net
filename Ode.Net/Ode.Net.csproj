@@ -110,6 +110,7 @@
     <Compile Include="Joints\JointLimitMotor.cs" />
     <Compile Include="Joints\JointType.cs" />
     <Compile Include="Joints\LinearMotor.cs" />
+    <Compile Include="Joints\Null.cs" />
     <Compile Include="Joints\Piston.cs" />
     <Compile Include="Joints\Plane2D.cs" />
     <Compile Include="Joints\PrismaticRotoide.cs" />
