@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ode.Net.Geoms
+namespace Ode.Net.Collision
 {
     /// <summary>
     /// Represents a multi-resolution hash table collision space.

@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ode.Net.Geoms;
+using Ode.Net.Collision;
 
 namespace Ode.Net.UnitTests
 {

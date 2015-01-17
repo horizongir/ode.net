@@ -1,4 +1,4 @@
-﻿using Ode.Net.Geoms;
+﻿using Ode.Net.Collision;
 using Ode.Net.Joints;
 using System;
 using System.Collections.Generic;
