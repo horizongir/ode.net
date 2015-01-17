@@ -1,4 +1,5 @@
-﻿using Ode.Net.Native;
+﻿using Ode.Net.Collision;
+using Ode.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -465,6 +466,68 @@ namespace Ode.Net
         {
             Mass result;
             CreateBoxTotal(totalMass, lx, ly, lz, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Creates a mass for the given triangle mesh with the specified density,
+        /// and center at the geometrical center of mass.
+        /// </summary>
+        /// <param name="density">The density of the triangle mesh.</param>
+        /// <param name="triMesh">The triangle mesh for which to compute mass parameters.</param>
+        /// <param name="result">The created mass.</param>
+        public static void CreateTriMesh(dReal density, TriMesh triMesh, out Mass result)
+        {
+            if (triMesh == null)
+            {
+                throw new ArgumentNullException("triMesh");
+            }
+
+            NativeMethods.dMassSetTrimesh(out result, density, triMesh.Id);
+        }
+
+        /// <summary>
+        /// Creates a mass for the given triangle mesh with the specified density,
+        /// and center at the geometrical center of mass.
+        /// </summary>
+        /// <param name="density">The density of the triangle mesh.</param>
+        /// <param name="triMesh">The triangle mesh for which to compute mass parameters.</param>
+        /// <returns>The created mass.</returns>
+        public static Mass CreateTriMesh(dReal density, TriMesh triMesh)
+        {
+            Mass result;
+            CreateTriMesh(density, triMesh, out result);
+            return result;
+        }
+
+        /// <summary>
+        /// Creates a mass for the given triangle mesh with the specified total mass,
+        /// and center at the geometrical center of mass.
+        /// </summary>
+        /// <param name="totalMass">The total mass of the triangle mesh.</param>
+        /// <param name="triMesh">The triangle mesh for which to compute mass parameters.</param>
+        /// <param name="result">The created mass.</param>
+        public static void CreateTriMeshTotal(dReal totalMass, TriMesh triMesh, out Mass result)
+        {
+            if (triMesh == null)
+            {
+                throw new ArgumentNullException("triMesh");
+            }
+
+            NativeMethods.dMassSetTrimeshTotal(out result, totalMass, triMesh.Id);
+        }
+
+        /// <summary>
+        /// Creates a mass for the given triangle mesh with the specified total mass,
+        /// and center at the geometrical center of mass.
+        /// </summary>
+        /// <param name="totalMass">The total mass of the triangle mesh.</param>
+        /// <param name="triMesh">The triangle mesh for which to compute mass parameters.</param>
+        /// <returns>The created mass.</returns>
+        public static Mass CreateTriMeshTotal(dReal totalMass, TriMesh triMesh)
+        {
+            Mass result;
+            CreateTriMeshTotal(totalMass, triMesh, out result);
             return result;
         }
 
