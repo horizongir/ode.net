@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ode.Net.Geoms
+namespace Ode.Net.Collision
 {
     /// <summary>
     /// Represents information about the surface properties and geometry

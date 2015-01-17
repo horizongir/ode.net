@@ -13,7 +13,7 @@ using dReal = System.Double;
 #error You must define SINGLE_PRECISION or DOUBLE_PRECISION
 #endif
 
-namespace Ode.Net.Geoms
+namespace Ode.Net.Collision
 {
     /// <summary>
     /// Represents a triangle mesh geom.
