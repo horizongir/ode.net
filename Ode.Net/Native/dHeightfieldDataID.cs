@@ -9,8 +9,6 @@ namespace Ode.Net.Native
 {
     class dHeightfieldDataID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        internal static readonly dHeightfieldDataID Null = new NulldHeightfieldDataID();
-
         internal dHeightfieldDataID()
             : base(true)
         {
@@ -25,19 +23,6 @@ namespace Ode.Net.Native
         {
             NativeMethods.dGeomHeightfieldDataDestroy(handle);
             return true;
-        }
-
-        class NulldHeightfieldDataID : dHeightfieldDataID
-        {
-            public NulldHeightfieldDataID()
-                : base(false)
-            {
-            }
-
-            protected override bool ReleaseHandle()
-            {
-                return false;
-            }
         }
     }
 }

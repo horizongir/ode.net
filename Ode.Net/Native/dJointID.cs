@@ -9,8 +9,6 @@ namespace Ode.Net.Native
 {
     class dJointID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        internal static readonly dJointID Null = new NulldJointID();
-
         internal dJointID()
             : base(true)
         {
@@ -25,19 +23,6 @@ namespace Ode.Net.Native
         {
             NativeMethods.dJointDestroy(handle);
             return true;
-        }
-
-        class NulldJointID : dJointID
-        {
-            public NulldJointID()
-                : base(false)
-            {
-            }
-
-            protected override bool ReleaseHandle()
-            {
-                return false;
-            }
         }
     }
 }

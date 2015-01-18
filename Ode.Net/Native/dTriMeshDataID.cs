@@ -9,8 +9,6 @@ namespace Ode.Net.Native
 {
     class dTriMeshDataID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        internal static readonly dTriMeshDataID Null = new NulldTriMeshDataID();
-
         internal dTriMeshDataID()
             : base(true)
         {
@@ -25,19 +23,6 @@ namespace Ode.Net.Native
         {
             NativeMethods.dGeomTriMeshDataDestroy(handle);
             return true;
-        }
-
-        class NulldTriMeshDataID : dTriMeshDataID
-        {
-            public NulldTriMeshDataID()
-                : base(false)
-            {
-            }
-
-            protected override bool ReleaseHandle()
-            {
-                return false;
-            }
         }
     }
 }
