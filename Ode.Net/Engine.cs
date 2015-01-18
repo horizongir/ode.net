@@ -47,8 +47,16 @@ namespace Ode.Net
         /// <summary>
         /// Initializes the ODE library.
         /// </summary>
+        public static void Init()
+        {
+            Init(InitFlags.None);
+        }
+
+        /// <summary>
+        /// Initializes the ODE library.
+        /// </summary>
         /// <param name="initFlags">Specifies ODE library initialization options.</param>
-        public static void Init(InitFlags initFlags = InitFlags.None)
+        public static void Init(InitFlags initFlags)
         {
             var result = NativeMethods.dInitODE2(initFlags);
             if (result == 0)
