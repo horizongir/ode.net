@@ -9,8 +9,6 @@ namespace Ode.Net.Native
 {
     class dGeomID : SafeHandleZeroOrMinusOneIsInvalid
     {
-        internal static readonly dGeomID Null = new NulldGeomID();
-
         internal dGeomID()
             : base(true)
         {
@@ -25,19 +23,6 @@ namespace Ode.Net.Native
         {
             NativeMethods.dGeomDestroy(handle);
             return true;
-        }
-
-        class NulldGeomID : dGeomID
-        {
-            public NulldGeomID()
-                : base(false)
-            {
-            }
-
-            protected override bool ReleaseHandle()
-            {
-                return false;
-            }
         }
     }
 }
