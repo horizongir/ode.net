@@ -9,7 +9,7 @@ namespace Ode.Net.Native
 {
     class dSpaceID : dGeomID
     {
-        internal new static readonly dSpaceID Null = new NulldSpaceID();
+        internal static readonly dSpaceID Null = new NulldSpaceID();
 
         internal dSpaceID()
             : base(true)
