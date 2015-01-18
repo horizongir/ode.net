@@ -16,6 +16,27 @@ namespace Ode.Net
         internal dWorldStepReserveInfo info;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="WorldStepMemoryReservationPolicy"/> class.
+        /// </summary>
+        public WorldStepMemoryReservationPolicy()
+            : this(1.2f)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorldStepMemoryReservationPolicy"/> class with
+        /// the specified memory reservation policy parameters.
+        /// </summary>
+        /// <param name="reserveFactor">
+        /// A quotient that is multiplied by required memory size to allocate extra
+        /// reserve whenever reallocation is needed.
+        /// </param>
+        public WorldStepMemoryReservationPolicy(float reserveFactor)
+            : this(reserveFactor, 65536)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="WorldStepMemoryReservationPolicy"/> class with
         /// the specified memory reservation policy parameters.
         /// </summary>
@@ -28,7 +49,7 @@ namespace Ode.Net
         /// to allocate expected working memory minimum at once without extra
         /// reallocations as number of bodies/joints grows.
         /// </param>
-        public WorldStepMemoryReservationPolicy(float reserveFactor = 1.2f, int reserveMinimum = 65536)
+        public WorldStepMemoryReservationPolicy(float reserveFactor, int reserveMinimum)
         {
             info.struct_size = (uint)Marshal.SizeOf(typeof(dWorldStepReserveInfo));
             info.reserve_factor = reserveFactor;
