@@ -154,7 +154,10 @@
     <None Include="NuGet\build\net45\Ode.Net.targets" />
     <None Include="Ode.Net.nuspec" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="NuGet\GIMPACT-LICENSE-BSD.TXT" />
+    <Content Include="NuGet\ODE-LICENSE-BSD.TXT" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
