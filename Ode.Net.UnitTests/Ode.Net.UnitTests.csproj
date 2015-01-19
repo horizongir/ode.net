@@ -76,6 +76,7 @@
     <Compile Include="LinearMotorTests.cs" />
     <Compile Include="MassTests.cs" />
     <Compile Include="OdeTests.cs" />
+    <Compile Include="TriMeshTests.cs" />
     <Compile Include="WorldTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
