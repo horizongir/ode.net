@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://bitbucket.org/horizongir/ode.net/raw/a0b4b01eeecb3d5d5aefafeb9af8c08d2fa03fe3/COPYING</licenseUrl>
+    <licenseUrl>https://bitbucket.org/horizongir/ode.net/raw/34365190e26179538165489f43adf36289daff06/COPYING</licenseUrl>
     <projectUrl>http://bitbucket.org/horizongir/ode.net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
