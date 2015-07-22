@@ -14,10 +14,16 @@ namespace Ode.Net
     public static class Engine
     {
         static readonly dMessageFunction ErrorHandler = OnError;
+        static readonly dMessageFunction MessageHandler = OnMessage;
 
         private static void OnError(int errnum, string msg, IntPtr ap)
         {
             throw new OdeException(msg);
+        }
+
+        private static void OnMessage(int errnum, string msg, IntPtr ap)
+        {
+            Console.Error.WriteLine(msg);
         }
 
         /// <summary>
@@ -65,7 +71,7 @@ namespace Ode.Net
             }
 
             NativeMethods.dSetErrorHandler(ErrorHandler);
-            NativeMethods.dSetMessageHandler(ErrorHandler);
+            NativeMethods.dSetMessageHandler(MessageHandler);
             NativeMethods.dSetDebugHandler(ErrorHandler);
         }
 
