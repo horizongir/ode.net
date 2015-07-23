@@ -13,6 +13,7 @@ namespace Ode.Net
     /// </summary>
     public static class Engine
     {
+        static bool logMessages = true;
         static readonly dMessageFunction ErrorHandler = OnError;
         static readonly dMessageFunction MessageHandler = OnMessage;
 
@@ -23,7 +24,20 @@ namespace Ode.Net
 
         private static void OnMessage(int errnum, string msg, IntPtr ap)
         {
-            Console.Error.WriteLine(msg);
+            if (logMessages)
+            {
+                Console.Error.WriteLine(msg);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to log ODE messages to
+        /// the standard error channel.
+        /// </summary>
+        public static bool LogMessages
+        {
+            get { return logMessages; }
+            set { logMessages = value; }
         }
 
         /// <summary>
