@@ -77,7 +77,7 @@ namespace Ode.Net.Joints
         /// </summary>
         public void Dispose()
         {
-            if (!handle.IsInvalid)
+            if (!handle.IsClosed)
             {
                 handle.Close();
             }

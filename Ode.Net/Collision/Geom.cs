@@ -13,12 +13,13 @@ namespace Ode.Net.Collision
     /// </summary>
     public abstract class Geom : IDisposable
     {
+        readonly GCHandle handle;
         readonly dGeomID id;
 
         internal Geom(dGeomID geom)
         {
             id = geom;
-            var handle = GCHandle.Alloc(this);
+            handle = GCHandle.Alloc(this);
             NativeMethods.dGeomSetData(id, GCHandle.ToIntPtr(handle));
         }
 
@@ -520,12 +521,10 @@ namespace Ode.Net.Collision
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!id.IsInvalid)
+            if (!id.IsClosed)
             {
                 if (disposing)
                 {
-                    var handlePtr = NativeMethods.dGeomGetData(id);
-                    var handle = GCHandle.FromIntPtr(handlePtr);
                     handle.Free();
                     id.Close();
                 }

@@ -23,6 +23,7 @@ namespace Ode.Net
     /// </summary>
     public sealed class Body : IDisposable
     {
+        readonly GCHandle handle;
         readonly dBodyID id;
         event EventHandler moved;
         dMovedCallback movedCallback;
@@ -34,8 +35,8 @@ namespace Ode.Net
         /// <param name="world">The world on which to place the body.</param>
         public Body(World world)
         {
+            handle = GCHandle.Alloc(this);
             id = NativeMethods.dBodyCreate(world.Id);
-            var handle = GCHandle.Alloc(this);
             NativeMethods.dBodySetData(id, GCHandle.ToIntPtr(handle));
         }
 
@@ -1009,10 +1010,8 @@ namespace Ode.Net
         /// </summary>
         public void Dispose()
         {
-            if (!id.IsInvalid)
+            if (!id.IsClosed)
             {
-                var handlePtr = NativeMethods.dBodyGetData(id);
-                var handle = GCHandle.FromIntPtr(handlePtr);
                 handle.Free();
                 id.Close();
             }
