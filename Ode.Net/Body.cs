@@ -38,6 +38,7 @@ namespace Ode.Net
             handle = GCHandle.Alloc(this);
             id = NativeMethods.dBodyCreate(world.Id);
             NativeMethods.dBodySetData(id, GCHandle.ToIntPtr(handle));
+            id.Owner = world;
         }
 
         internal dBodyID Id
@@ -52,6 +53,14 @@ namespace Ode.Net
             if (handlePtr == IntPtr.Zero) return null;
             var handle = GCHandle.FromIntPtr(handlePtr);
             return (Body)handle.Target;
+        }
+
+        /// <summary>
+        /// Gets the world on which the body is placed.
+        /// </summary>
+        public World World
+        {
+            get { return id.Owner; }
         }
 
         /// <summary>

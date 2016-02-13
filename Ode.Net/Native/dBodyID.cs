@@ -9,6 +9,7 @@ namespace Ode.Net.Native
 {
     class dBodyID : SafeHandleZeroOrMinusOneIsInvalid
     {
+        World owner;
         internal static readonly dBodyID Null = new NulldBodyID();
 
         internal dBodyID()
@@ -21,9 +22,18 @@ namespace Ode.Net.Native
         {
         }
 
+        internal World Owner
+        {
+            get { return owner; }
+            set { owner = value; }
+        }
+
         protected override bool ReleaseHandle()
         {
-            NativeMethods.dBodyDestroy(handle);
+            if (owner == null || !owner.Id.IsClosed)
+            {
+                NativeMethods.dBodyDestroy(handle);
+            }
             return true;
         }
 
