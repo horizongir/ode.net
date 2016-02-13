@@ -14,12 +14,13 @@ namespace Ode.Net.Joints
     public abstract class Joint : IDisposable
     {
         internal readonly dJointID id;
+        readonly GCHandle handle;
         JointFeedback feedback;
 
         internal Joint(dJointID joint, JointGroup group)
         {
             id = joint;
-            var handle = GCHandle.Alloc(this);
+            handle = GCHandle.Alloc(this);
             NativeMethods.dJointSetData(id, GCHandle.ToIntPtr(handle));
 
             if (group != null)
@@ -121,10 +122,8 @@ namespace Ode.Net.Joints
         /// </summary>
         public void Dispose()
         {
-            if (!id.IsInvalid)
+            if (!id.IsClosed)
             {
-                var handlePtr = NativeMethods.dJointGetData(id);
-                var handle = GCHandle.FromIntPtr(handlePtr);
                 handle.Free();
                 id.Close();
             }

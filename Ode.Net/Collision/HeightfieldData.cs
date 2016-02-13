@@ -439,7 +439,7 @@ namespace Ode.Net.Collision
         /// </summary>
         public void Dispose()
         {
-            if (!id.IsInvalid)
+            if (!id.IsClosed)
             {
                 id.Close();
             }
