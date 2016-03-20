@@ -123,6 +123,7 @@
     <Compile Include="Matrix3.cs" />
     <Compile Include="Native\collision.cs" />
     <Compile Include="Native\common.cs" />
+    <Compile Include="Native\DataHandle.cs" />
     <Compile Include="Native\dTriMeshDataID.cs" />
     <Compile Include="Native\dHeightfieldDataID.cs" />
     <Compile Include="Native\dSpaceID.cs" />

@@ -485,41 +485,41 @@ namespace Ode.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshDataBuildSingle(
             dTriMeshDataID g,
-            IntPtr Vertices, int VertexStride, int VertexCount,
-            IntPtr Indices, int IndexCount, int TriStride);
+            DataHandle Vertices, int VertexStride, int VertexCount,
+            DataHandle Indices, int IndexCount, int TriStride);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshDataBuildSingle1(
             dTriMeshDataID g,
-            IntPtr Vertices, int VertexStride, int VertexCount,
-            IntPtr Indices, int IndexCount, int TriStride,
-            IntPtr Normals);
+            DataHandle Vertices, int VertexStride, int VertexCount,
+            DataHandle Indices, int IndexCount, int TriStride,
+            DataHandle Normals);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshDataBuildDouble(
             dTriMeshDataID g,
-            IntPtr Vertices, int VertexStride, int VertexCount,
-            IntPtr Indices, int IndexCount, int TriStride);
+            DataHandle Vertices, int VertexStride, int VertexCount,
+            DataHandle Indices, int IndexCount, int TriStride);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshDataBuildDouble1(
             dTriMeshDataID g,
-            IntPtr Vertices, int VertexStride, int VertexCount,
-            IntPtr Indices, int IndexCount, int TriStride,
-            IntPtr Normals);
+            DataHandle Vertices, int VertexStride, int VertexCount,
+            DataHandle Indices, int IndexCount, int TriStride,
+            DataHandle Normals);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshDataBuildSimple(
             dTriMeshDataID g,
-            IntPtr Vertices, int VertexCount,
-            IntPtr Indices, int IndexCount);
+            DataHandle Vertices, int VertexCount,
+            DataHandle Indices, int IndexCount);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshDataBuildSimple1(
             dTriMeshDataID g,
-            IntPtr Vertices, int VertexCount,
-            IntPtr Indices, int IndexCount,
-            IntPtr Normals);
+            DataHandle Vertices, int VertexCount,
+            DataHandle Indices, int IndexCount,
+            DataHandle Normals);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void dGeomTriMeshDataPreprocess(dTriMeshDataID g);

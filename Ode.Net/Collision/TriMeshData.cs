@@ -21,9 +21,9 @@ namespace Ode.Net.Collision
     public sealed class TriMeshData : IDisposable
     {
         readonly dTriMeshDataID id;
-        IntPtr verticesData;
-        IntPtr indicesData;
-        IntPtr normalsData;
+        DataHandle verticesData;
+        DataHandle indicesData;
+        DataHandle normalsData;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TriMeshData"/> class.
@@ -183,14 +183,14 @@ namespace Ode.Net.Collision
             NativeMethods.dGeomTriMeshDataUpdate(id);
         }
 
-        private static void ReleaseDataStore(ref IntPtr storeHandle)
+        private static void ReleaseDataStore(ref DataHandle storeHandle)
         {
-            if (storeHandle != IntPtr.Zero)
+            if (storeHandle != null)
             {
-                Marshal.FreeHGlobal(storeHandle);
+                storeHandle.Close();
             }
 
-            storeHandle = IntPtr.Zero;
+            storeHandle = null;
         }
 
         private void ReleaseDataStores()
@@ -203,20 +203,20 @@ namespace Ode.Net.Collision
         private void StoreMeshData<TVertex>(TVertex[] vertices, int[] indices, dReal[] normals)
         {
             ReleaseDataStores();
-            verticesData = Marshal.AllocHGlobal(vertices.Length * Marshal.SizeOf(typeof(TVertex)));
-            indicesData = Marshal.AllocHGlobal(indices.Length * Marshal.SizeOf(typeof(int)));
+            verticesData = new DataHandle(vertices.Length * Marshal.SizeOf(typeof(TVertex)));
+            indicesData = new DataHandle(indices.Length * Marshal.SizeOf(typeof(int)));
 
             float[] floatVertices = vertices as float[];
-            if (floatVertices != null) Marshal.Copy(floatVertices, 0, verticesData, vertices.Length);
+            if (floatVertices != null) verticesData.Copy(floatVertices);
 
             double[] doubleVertices = vertices as double[];
-            if (doubleVertices != null) Marshal.Copy(doubleVertices, 0, verticesData, vertices.Length);
+            if (doubleVertices != null) verticesData.Copy(doubleVertices);
 
-            Marshal.Copy(indices, 0, indicesData, indices.Length);
+            indicesData.Copy(indices);
             if (normals != null)
             {
-                normalsData = Marshal.AllocHGlobal(normals.Length * Marshal.SizeOf(typeof(int)));
-                Marshal.Copy(normals, 0, normalsData, normals.Length);
+                normalsData = new DataHandle(normals.Length * Marshal.SizeOf(typeof(int)));
+                normalsData.Copy(normals);
             }
         }
 
