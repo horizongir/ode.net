@@ -42,8 +42,8 @@ namespace Ode.Net.Joints
         /// </remarks>
         public dReal LowStop
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamLoStop); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamLoStop, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamLoStop); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamLoStop, value); }
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace Ode.Net.Joints
         /// </remarks>
         public dReal HighStop
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamHiStop); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamHiStop, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamHiStop); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamHiStop, value); }
         }
 
         /// <summary>
@@ -65,8 +65,8 @@ namespace Ode.Net.Joints
         /// </summary>
         public dReal Velocity
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamVel); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamVel, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamVel); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamVel, value); }
         }
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Ode.Net.Joints
         /// </remarks>
         public dReal MaxForce
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamFMax); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamFMax, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamFMax); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamFMax, value); }
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Ode.Net.Joints
         /// </remarks>
         public dReal FudgeFactor
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamFudgeFactor); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamFudgeFactor); }
             set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamFudgeFactor, value); }
         }
 
@@ -107,8 +107,8 @@ namespace Ode.Net.Joints
         /// </remarks>
         public dReal Bounce
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamBounce); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamBounce, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamBounce); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamBounce, value); }
         }
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Ode.Net.Joints
         /// </summary>
         public dReal Cfm
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamCFM); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamCFM, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamCFM); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamCFM, value); }
         }
 
         /// <summary>
@@ -125,8 +125,8 @@ namespace Ode.Net.Joints
         /// </summary>
         public dReal StopErp
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamStopERP); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamStopERP, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamStopERP); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamStopERP, value); }
         }
 
         /// <summary>
@@ -139,8 +139,8 @@ namespace Ode.Net.Joints
         /// </remarks>
         public dReal StopCfm
         {
-            get { return NativeMethods.dJointGetHingeParam(id, index * dParamGroup + dJointParam.dParamStopCFM); }
-            set { NativeMethods.dJointSetHingeParam(id, index * dParamGroup + dJointParam.dParamStopCFM, value); }
+            get { return GetParam(id, index * dParamGroup + dJointParam.dParamStopCFM); }
+            set { SetParam(id, index * dParamGroup + dJointParam.dParamStopCFM, value); }
         }
     }
 }
