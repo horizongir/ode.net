@@ -9,6 +9,8 @@ namespace Ode.Net.Native
 {
     class dJointID : SafeHandleZeroOrMinusOneIsInvalid
     {
+        World owner;
+
         internal dJointID()
             : base(true)
         {
@@ -19,9 +21,18 @@ namespace Ode.Net.Native
         {
         }
 
+        internal World Owner
+        {
+            get { return owner; }
+            set { owner = value; }
+        }
+
         protected override bool ReleaseHandle()
         {
-            NativeMethods.dJointDestroy(handle);
+            if (owner == null || !owner.Id.IsClosed)
+            {
+                NativeMethods.dJointDestroy(handle);
+            }
             return true;
         }
     }

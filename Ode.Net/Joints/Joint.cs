@@ -17,11 +17,12 @@ namespace Ode.Net.Joints
         readonly GCHandle handle;
         JointFeedback feedback;
 
-        internal Joint(dJointID joint, JointGroup group)
+        internal Joint(dJointID joint, World world, JointGroup group)
         {
             id = joint;
             handle = GCHandle.Alloc(this);
             NativeMethods.dJointSetData(id, GCHandle.ToIntPtr(handle));
+            id.Owner = world;
 
             if (group != null)
             {
@@ -36,6 +37,14 @@ namespace Ode.Net.Joints
             if (handlePtr == IntPtr.Zero) return null;
             var handle = GCHandle.FromIntPtr(handlePtr);
             return (Joint)handle.Target;
+        }
+
+        /// <summary>
+        /// Gets the world on which the joint is placed.
+        /// </summary>
+        public World World
+        {
+            get { return id.Owner; }
         }
 
         /// <summary>

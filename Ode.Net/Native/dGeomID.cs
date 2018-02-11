@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32.SafeHandles;
+using Ode.Net.Collision;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Ode.Net.Native
 {
     class dGeomID : SafeHandleZeroOrMinusOneIsInvalid
     {
+        Space owner;
+
         internal dGeomID()
             : base(true)
         {
@@ -19,9 +22,18 @@ namespace Ode.Net.Native
         {
         }
 
+        internal Space Owner
+        {
+            get { return owner; }
+            set { owner = value; }
+        }
+
         protected override bool ReleaseHandle()
         {
-            NativeMethods.dGeomDestroy(handle);
+            if (owner == null || !owner.Id.IsClosed)
+            {
+                NativeMethods.dGeomDestroy(handle);
+            }
             return true;
         }
     }

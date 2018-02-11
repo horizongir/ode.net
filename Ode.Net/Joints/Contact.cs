@@ -37,7 +37,7 @@ namespace Ode.Net.Joints
         /// </param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Contact(World world, ContactInfo contact, JointGroup group)
-            : base(NativeMethods.dJointCreateContact(world.Id, dJointGroupID.Null, ref contact), group)
+            : base(NativeMethods.dJointCreateContact(world.Id, dJointGroupID.Null, ref contact), world, group)
         {
         }
     }

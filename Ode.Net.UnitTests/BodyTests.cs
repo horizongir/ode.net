@@ -11,17 +11,26 @@ namespace Ode.Net.UnitTests
         Body body;
 
         [TestInitialize]
-        public void Initialize()
+        public void TestInitialize()
         {
+            OdeTests.Initialize();
             world = new World();
             body = new Body(world);
         }
 
         [TestCleanup]
-        public void Cleanup()
+        public void TestCleanup()
         {
             body.Dispose();
             world.Dispose();
+            OdeTests.Cleanup();
+        }
+
+        [TestMethod]
+        public void InverseCleanup()
+        {
+            world.Dispose();
+            body.Dispose();
         }
 
         [TestMethod]
