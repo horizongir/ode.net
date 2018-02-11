@@ -95,6 +95,14 @@ namespace Ode.Net
         }
 
         /// <summary>
+        /// Gets the length, or magnitude, of the vector.
+        /// </summary>
+        public dReal Length
+        {
+            get { return (dReal)Math.Sqrt(X * X + Y * Y + Z * Z); }
+        }
+
+        /// <summary>
         /// Returns a value indicating whether this instance is equal to a specified
         /// <see cref="Vector3"/> value.
         /// </summary>
