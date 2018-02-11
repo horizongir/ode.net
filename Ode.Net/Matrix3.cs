@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -19,6 +20,7 @@ namespace Ode.Net
     /// Represents a 3x3 matrix.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct Matrix3 : IEquatable<Matrix3>
     {
         /// <summary>

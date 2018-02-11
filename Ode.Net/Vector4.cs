@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -19,6 +20,7 @@ namespace Ode.Net
     /// Represents a vector with four components.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct Vector4 : IEquatable<Vector4>
     {
         /// <summary>

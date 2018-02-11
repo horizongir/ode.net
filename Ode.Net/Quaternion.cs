@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -20,6 +21,7 @@ namespace Ode.Net
     /// compute angle rotations about the vector axis (x,y,z).
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct Quaternion : IEquatable<Quaternion>
     {
         /// <summary>
