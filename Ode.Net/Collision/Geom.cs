@@ -21,6 +21,7 @@ namespace Ode.Net.Collision
             id = geom;
             handle = GCHandle.Alloc(this);
             NativeMethods.dGeomSetData(id, GCHandle.ToIntPtr(handle));
+            id.Owner = Space.FromIntPtr(NativeMethods.dGeomGetSpace(id));
         }
 
         internal dGeomID Id
@@ -121,7 +122,7 @@ namespace Ode.Net.Collision
         /// </summary>
         public Space Space
         {
-            get { return Space.FromIntPtr(NativeMethods.dGeomGetSpace(id)); }
+            get { return id.Owner; }
         }
 
         /// <summary>

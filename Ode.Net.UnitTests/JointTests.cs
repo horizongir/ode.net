@@ -8,26 +8,36 @@ namespace Ode.Net.UnitTests
     [TestClass]
     public class JointTests
     {
+        World world;
+        Joint joint;
+
         [TestInitialize]
         public void Initialize()
         {
             OdeTests.Initialize();
+            world = new World();
+            joint = new Plane2D(world);
         }
 
         [TestCleanup]
         public void Cleanup()
         {
+            joint.Dispose();
+            world.Dispose();
             OdeTests.Cleanup();
+        }
+
+        [TestMethod]
+        public void InverseCleanup()
+        {
+            world.Dispose();
+            joint.Dispose();
         }
 
         [TestMethod]
         public void JointFeedback_ApplyBodyForce_ReadNonZeroFeedback()
         {
             const dReal StepSize = (dReal)0.1;
-
-            Engine.Init();
-            Engine.AllocateDataForThread(AllocateDataFlags.All);
-            using (var world = new World())
             using (var body1 = new Body(world))
             using (var body2 = new Body(world))
             using (var joint = new Ball(world))
@@ -45,7 +55,6 @@ namespace Ode.Net.UnitTests
                 world.QuickStep(StepSize);
                 Assert.AreNotEqual(Vector3.Zero, joint.Feedback.ForceOnBody1);
             }
-            Engine.Close();
         }
     }
 }

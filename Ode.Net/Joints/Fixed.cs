@@ -36,7 +36,7 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Fixed(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateFixed(world.Id, dJointGroupID.Null), group)
+            : base(NativeMethods.dJointCreateFixed(world.Id, dJointGroupID.Null), world, group)
         {
         }
 

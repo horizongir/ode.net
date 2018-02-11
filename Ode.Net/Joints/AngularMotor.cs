@@ -39,7 +39,7 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public AngularMotor(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateAMotor(world.Id, dJointGroupID.Null), group)
+            : base(NativeMethods.dJointCreateAMotor(world.Id, dJointGroupID.Null), world, group)
         {
             limitMotor1 = new AngularMotorLimitMotor(this, 0);
             limitMotor2 = new AngularMotorLimitMotor(this, 1);

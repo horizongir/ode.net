@@ -38,7 +38,7 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Universal(World world, JointGroup group)
-            : base(NativeMethods.dJointCreateUniversal(world.Id, dJointGroupID.Null), group)
+            : base(NativeMethods.dJointCreateUniversal(world.Id, dJointGroupID.Null), world, group)
         {
             limitMotor1 = new UniversalLimitMotor(this, 0);
             limitMotor2 = new UniversalLimitMotor(this, 1);

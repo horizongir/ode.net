@@ -38,7 +38,7 @@ namespace Ode.Net.Joints
         /// <param name="world">The world on which to place the joint.</param>
         /// <param name="group">The joint group that will contain the joint.</param>
         public Piston(World world, JointGroup group)
-            : base(NativeMethods.dJointCreatePiston(world.Id, dJointGroupID.Null), group)
+            : base(NativeMethods.dJointCreatePiston(world.Id, dJointGroupID.Null), world, group)
         {
             limitMotorP = new PistonLimitMotor(this, 0);
             limitMotorR = new PistonLimitMotor(this, 1);
