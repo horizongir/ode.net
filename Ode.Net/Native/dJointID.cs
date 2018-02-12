@@ -33,6 +33,7 @@ namespace Ode.Net.Native
             {
                 NativeMethods.dJointDestroy(handle);
             }
+            owner = null;
             return true;
         }
     }

@@ -34,6 +34,7 @@ namespace Ode.Net.Native
             {
                 NativeMethods.dGeomDestroy(handle);
             }
+            owner = null;
             return true;
         }
     }
