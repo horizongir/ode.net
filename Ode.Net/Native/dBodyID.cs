@@ -34,6 +34,7 @@ namespace Ode.Net.Native
             {
                 NativeMethods.dBodyDestroy(handle);
             }
+            owner = null;
             return true;
         }
 
